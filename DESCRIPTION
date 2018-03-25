@@ -1,0 +1,20 @@
+Package: polyglot
+Type: Package
+Title: Learn Foreign Language Vocabulary
+Version: 0.1.2
+Authors@R: person("Félix", "Luginbuhl", email = "felix.luginbuhl@protonmail.ch", role = c("aut", "cre"))
+Description: Use the R console as an interactive learning environment to memorize any two columns dataset.
+Depends: R (>= 2.15.1)
+License: GPL-3
+Encoding: UTF-8
+LazyData: true
+RoxygenNote: 6.0.1
+Suggests: knitr, rmarkdown
+Imports: utils
+VignetteBuilder: knitr
+NeedsCompilation: no
+Packaged: 2018-03-19 10:54:38 UTC; Felix
+Author: Félix Luginbuhl [aut, cre]
+Maintainer: Félix Luginbuhl <felix.luginbuhl@protonmail.ch>
+Repository: CRAN
+Date/Publication: 2018-03-19 15:03:52 UTC
