@@ -29,7 +29,13 @@ sessionQuestions <- function(assign.env = parent.frame(1)) {
          message(paste0("| Answer: ", sessionDataset[1,2], "\n")),
          sessionDataset$Score[1] <- sessionDataset$Score[1] + 1,
          sessionDataset$Score[1] <- sessionDataset$Score[1] + 2,
-         sessionDataset$Score[1] <- sessionDataset$Score[1] + 4,
+         if(exists("sessionDataset")) {
+           sessionDataset$Score[1] <- sessionDataset$Score[1] + 4
+           assign("sessionDataset", sessionDataset, envir = assign.env)
+         } else if(exists("sessionDataset")) {
+           sessionDataset$Date[1] <- Sys.Date() + 4 # add 4 days when "easy"
+           assign("sessionDataset", sessionDataset, envir = assign.env)
+         },
          if (names(sessionDataset[3]) != "Score") {
            message(paste("| Hint/Example:", sessionDataset[1,3],"\n"))
          } else {
