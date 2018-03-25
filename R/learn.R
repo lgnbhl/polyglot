@@ -55,6 +55,12 @@ learn <- function(assign.env = parent.frame(1)) {
       sessionDataset[,2] <- as.character(sessionDataset[,2])
       assign("sessionDataset", sessionDataset, envir = assign.env)
     }
+    # Add Date variable if not existing
+    if (any(names(sessionDataset) != "Date")) {
+      sessionDataset$Date <- rep(Sys.Date(), nrow(sessionDataset)) # add today date
+      assign("sessionDataset", sessionDataset, envir = assign.env)
+      write.csv(sessionDataset, file = paste0("", datasetAbsolutePath, ""), row.names = FALSE)
+    }
     # Add numeric Score variable if not existing
     if (any(names(sessionDataset) == "Score")) {
       message(paste("|", datasetName, "selected, with", nrow(sessionDataset),"rows."))
