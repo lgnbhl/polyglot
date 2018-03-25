@@ -32,8 +32,8 @@ sessionQuestions <- function(assign.env = parent.frame(1)) {
          if(exists("sessionDataset")) {
            sessionDataset$Score[1] <- sessionDataset$Score[1] + 4
            assign("sessionDataset", sessionDataset, envir = assign.env)
-         } else if(exists("sessionDataset")) {
-           sessionDataset$Date[1] <- Sys.Date() + 4 # add 4 days when "easy"
+           newDate <- as.Date(sessionDataset$Date[1]) + 4 # add 4 days
+           sessionDataset$Date[1] <- as.character.Date(newDate)
            assign("sessionDataset", sessionDataset, envir = assign.env)
          },
          if (names(sessionDataset[3]) != "Score") {
