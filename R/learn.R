@@ -52,6 +52,7 @@ learn <- function(assign.env = parent.frame(1)) {
       return(learn())
     } else {
       sessionDataset[,1] <- as.character(sessionDataset[,1])
+      assign("sessionDataset", sessionDataset, envir = assign.env)
       sessionDataset[,2] <- as.character(sessionDataset[,2])
       assign("sessionDataset", sessionDataset, envir = assign.env)
     }
@@ -88,7 +89,6 @@ learn <- function(assign.env = parent.frame(1)) {
     }
     # if NAs exist in the Repetition variable, replace by 0
     sessionDataset$Repetition[is.na(sessionDataset$Repetition)] <- 0
-    # assign and write dataset
     assign("sessionDataset", sessionDataset, envir = assign.env)
     write.csv(sessionDataset, file = paste0("", datasetAbsolutePath, ""), row.names = FALSE)
     return(sessionQuestions())
