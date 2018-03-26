@@ -31,7 +31,7 @@
 
 learn <- function(assign.env = parent.frame(1)) {
   cat("| Welcome to polyglot! \n")
-  cat("| Please choose a dataset to study, or type 0 to exit.")
+  cat("| Please choose a dataset to study, or type 0 to exit. \n")
   if(!exists("sessionStartTime")) {
     sessionStartTime <- Sys.time()
     assign("sessionStartTime", sessionStartTime, envir = assign.env)
@@ -69,9 +69,9 @@ learn <- function(assign.env = parent.frame(1)) {
     sessionDataset$Score[is.na(sessionDataset$Score)] <- 0
     # Add Date variable if not existing and print message
     if (any(names(sessionDataset) == "Date")) {
-      cat(paste("|", length(which(sessionDataset$Date <= Sys.Date())),"rows left to learn. \n"))
+      cat(paste("|", length(which(sessionDataset$Date <= Sys.Date())),"rows left to learn. \n\n"))
         if(length(which(sessionDataset$Date <= Sys.Date())) == 1) {
-        cat(paste("| 1 row left to learn. \n"))
+        cat(paste("| 1 row left to learn. \n\n"))
         }
       } else {
       sessionDataset$Date <- rep(Sys.Date(), nrow(sessionDataset)) # add today date
