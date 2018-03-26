@@ -30,8 +30,8 @@
 #' @export
 
 learn <- function(assign.env = parent.frame(1)) {
-  message("| Welcome to polyglot!")
-  message("| Please choose a dataset to study, or type 0 to exit.")
+  cat("| Welcome to polyglot! \n")
+  cat("| Please choose a dataset to study, or type 0 to exit. \n")
   if(!exists("sessionStartTime")) {
     sessionStartTime <- Sys.time()
     assign("sessionStartTime", sessionStartTime, envir = assign.env)
@@ -48,32 +48,37 @@ learn <- function(assign.env = parent.frame(1)) {
     # Check if the dataset has at least two colomns
     if (ncol(sessionDataset) < 2) {
       message("| WARNING: Your dataset doesn't have two colomns.")
-      message("| Learner needs two colomns datasets to work correctly.\n")
+      message("| polyglot needs two colomns datasets to work correctly.\n")
       return(learn())
     } else {
       sessionDataset[,1] <- as.character(sessionDataset[,1])
       sessionDataset[,2] <- as.character(sessionDataset[,2])
       assign("sessionDataset", sessionDataset, envir = assign.env)
     }
-    # Add Date variable if not existing
-    if (any(names(sessionDataset) != "Date")) {
-      sessionDataset$Date <- rep(Sys.Date(), nrow(sessionDataset)) # add today date
-      assign("sessionDataset", sessionDataset, envir = assign.env)
-      write.csv(sessionDataset, file = paste0("", datasetAbsolutePath, ""), row.names = FALSE)
-    }
-    # Add numeric Score variable if not existing
+    # Add Score variable if not existing and print message
     if (any(names(sessionDataset) == "Score")) {
-      message(paste("|", datasetName, "selected, with", nrow(sessionDataset),"rows."))
-      message("| Continuing learning session...\n")
+      cat(paste("|", datasetName, "selected, with", nrow(sessionDataset),"rows. \n"))
     } else {
       sessionDataset$Score <- rep(as.numeric(0), nrow(sessionDataset))
       assign("sessionDataset", sessionDataset, envir = assign.env)
       write.csv(sessionDataset, file = paste0("", datasetAbsolutePath, ""), row.names = FALSE)
-      message(paste("|", datasetName,"selected, with", nrow(sessionDataset),"rows."))
-      message("| New learning session launched...\n")
+      cat(paste("|", datasetName,"selected, with", nrow(sessionDataset),"rows. \n"))
+      cat("| New learning session launched... \n\n")
     }
     # If NAs exist in the Score variable, replace by 0
     sessionDataset$Score[is.na(sessionDataset$Score)] <- 0
+    # Add Date variable if not existing and print message
+    if (any(names(sessionDataset) == "Date")) {
+      cat(paste("|", length(which(sessionDataset$Date <= Sys.Date())),"rows left to learn. \n"))
+        if(length(which(sessionDataset$Date <= Sys.Date())) == 1) {
+        cat(paste("| 1 row left to learn. \n"))
+    } else {
+      sessionDataset$Date <- rep(Sys.Date(), nrow(sessionDataset)) # add today date
+      assign("sessionDataset", sessionDataset, envir = assign.env)
+      write.csv(sessionDataset, file = paste0("", datasetAbsolutePath, ""), row.names = FALSE)
+    }
+    # if NAs exist in the Date variable, replace by today
+    sessionDataset$Date[is.na(sessionDataset$Date)] <- Sys.Date()
     assign("sessionDataset", sessionDataset, envir = assign.env)
     write.csv(sessionDataset, file = paste0("", datasetAbsolutePath, ""), row.names = FALSE)
     return(sessionQuestions())
