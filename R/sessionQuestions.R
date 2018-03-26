@@ -47,6 +47,7 @@ sessionQuestions <- function(assign.env = parent.frame(1)) {
          # simplified SuperMemo algorithm: https://www.supermemo.com/articles/paper.htm
          if(sessionDataset$Repetition[1] == 0) { # "Easy"
                sessionDataset$Repetition[1] <- sessionDataset$Repetition[1] + 1
+               assign("sessionDataset", sessionDataset, envir = assign.env)
                sessionDataset$Score[1] <- sessionDataset$Score[1] + 4
                newDate <- as.Date(sessionDataset$Date[1]) + 4 # add 4 days
                sessionDataset$Date[1] <- as.character.Date(newDate)
