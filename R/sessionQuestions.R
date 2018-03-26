@@ -33,7 +33,7 @@ sessionQuestions <- function(assign.env = parent.frame(1)) {
          return(sessionExit()),
          message(paste0("| Answer: ", sessionDataset[1,2], "")),
          if(exists("sessionDataset")) {
-           sessionDataset$Score[1] <- sessionDataset$Score[1] + 1}
+           sessionDataset$Score[1] <- sessionDataset$Score[1] + 1
            if(sessionDataset$Repetition[1] > 0){
              sessionDataset$Repetition[1] <- sessionDataset$Repetition[1] + 1
              assign("sessionDataset", sessionDataset, envir = assign.env)
