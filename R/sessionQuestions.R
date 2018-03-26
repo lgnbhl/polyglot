@@ -44,59 +44,56 @@ sessionQuestions <- function(assign.env = parent.frame(1)) {
             sessionDataset$Score[1] <- sessionDataset$Score[1] + 2
             assign("sessionDataset", sessionDataset, envir = assign.env)
           },
+          # simplified SuperMemo algorithm: https://www.supermemo.com/articles/paper.htm
           if(sessionDataset$Repetition[1] == 0) { # "Easy"
-               sessionDataset$Repetition[1] <- sessionDataset$Repetition[1] + 1
-               sessionDataset$Score[1] <- sessionDataset$Score[1] + 4
-               assign("sessionDataset", sessionDataset, envir = assign.env)
-           } else if (sessionDataset$Repetition[1] == 1) {
                sessionDataset$Repetition[1] <- sessionDataset$Repetition[1] + 1
                sessionDataset$Score[1] <- sessionDataset$Score[1] + 4
                newDate <- as.Date(sessionDataset$Date[1]) + 4 # add 4 days
                sessionDataset$Date[1] <- as.character.Date(newDate)
                assign("sessionDataset", sessionDataset, envir = assign.env)
+           } else if (sessionDataset$Repetition[1] == 1) {
+               sessionDataset$Repetition[1] <- sessionDataset$Repetition[1] + 1
+               sessionDataset$Score[1] <- sessionDataset$Score[1] + 4
+               newDate <- as.Date(sessionDataset$Date[1]) + 7 # add 7 days
+               sessionDataset$Date[1] <- as.character.Date(newDate)
+               assign("sessionDataset", sessionDataset, envir = assign.env)
            } else if (sessionDataset$Repetition[1] == 2) {
                sessionDataset$Repetition[1] <- sessionDataset$Repetition[1] + 1
                sessionDataset$Score[1] <- sessionDataset$Score[1] + 4 
-               newDate <- as.Date(sessionDataset$Date[1]) + 7 # add 7 days
+               newDate <- as.Date(sessionDataset$Date[1]) + 12 # add 12 days
                sessionDataset$Date[1] <- as.character.Date(newDate)
                assign("sessionDataset", sessionDataset, envir = assign.env)
            } else if (sessionDataset$Repetition[1] == 3) {
                sessionDataset$Repetition[1] <- sessionDataset$Repetition[1] + 1
                sessionDataset$Score[1] <- sessionDataset$Score[1] + 4
-               newDate <- as.Date(sessionDataset$Date[1]) + 12 # add 12 days
+               newDate <- as.Date(sessionDataset$Date[1]) + 20 # add 20 days
                sessionDataset$Date[1] <- as.character.Date(newDate)
                assign("sessionDataset", sessionDataset, envir = assign.env)
            } else if (sessionDataset$Repetition[1] == 4) {
                sessionDataset$Repetition[1] <- sessionDataset$Repetition[1] + 1
                sessionDataset$Score[1] <- sessionDataset$Score[1] + 4
-               newDate <- as.Date(sessionDataset$Date[1]) + 20 # add 20 days
+               newDate <- as.Date(sessionDataset$Date[1]) + 30 # add 1 month
                sessionDataset$Date[1] <- as.character.Date(newDate)
                assign("sessionDataset", sessionDataset, envir = assign.env)
            } else if (sessionDataset$Repetition[1] == 5) {
                sessionDataset$Repetition[1] <- sessionDataset$Repetition[1] + 1
                sessionDataset$Score[1] <- sessionDataset$Score[1] + 4
-               newDate <- as.Date(sessionDataset$Date[1]) + 30 # add 1 month
+               newDate <- as.Date(sessionDataset$Date[1]) + 60 # add 2 months
                sessionDataset$Date[1] <- as.character.Date(newDate)
                assign("sessionDataset", sessionDataset, envir = assign.env)
            } else if (sessionDataset$Repetition[1] == 6) {
                sessionDataset$Repetition[1] <- sessionDataset$Repetition[1] + 1
                sessionDataset$Score[1] <- sessionDataset$Score[1] + 4
-               newDate <- as.Date(sessionDataset$Date[1]) + 60 # add 2 months
+               newDate <- as.Date(sessionDataset$Date[1]) + 90 # add 3 months
                sessionDataset$Date[1] <- as.character.Date(newDate)
                assign("sessionDataset", sessionDataset, envir = assign.env)
            } else if (sessionDataset$Repetition[1] == 7) {
                sessionDataset$Repetition[1] <- sessionDataset$Repetition[1] + 1
                sessionDataset$Score[1] <- sessionDataset$Score[1] + 4
-               newDate <- as.Date(sessionDataset$Date[1]) + 90 # add 3 months
-               sessionDataset$Date[1] <- as.character.Date(newDate)
-               assign("sessionDataset", sessionDataset, envir = assign.env)
-           } else if (sessionDataset$Repetition[1] == 8) {
-               sessionDataset$Repetition[1] <- sessionDataset$Repetition[1] + 1
-               sessionDataset$Score[1] <- sessionDataset$Score[1] + 4
                newDate <- as.Date(sessionDataset$Date[1]) + 150 # add 5 months
                sessionDataset$Date[1] <- as.character.Date(newDate)
                assign("sessionDataset", sessionDataset, envir = assign.env)
-           } else if (sessionDataset$Repetition[1] == 9) {
+           } else if (sessionDataset$Repetition[1] == 8) {
                sessionDataset$Repetition[1] <- sessionDataset$Repetition[1] + 1
                sessionDataset$Score[1] <- sessionDataset$Score[1] + 4
                newDate <- as.Date(sessionDataset$Date[1]) + 270 # add 9 months
