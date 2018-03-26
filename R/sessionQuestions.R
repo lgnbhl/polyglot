@@ -40,8 +40,7 @@ sessionQuestions <- function(assign.env = parent.frame(1)) {
             }
            assign("sessionDataset", sessionDataset, envir = assign.env)
           },
-          sessionDataset$Score[1] <- sessionDataset$Score[1] + 2
-          assign("sessionDataset", sessionDataset, envir = assign.env),
+          sessionDataset$Score[1] <- sessionDataset$Score[1] + 2,
           if(sessionDataset$Repetition[1] == 0) {
                sessionDataset$Score[1] <- sessionDataset$Score[1] + 4
                assign("sessionDataset", sessionDataset, envir = assign.env)
