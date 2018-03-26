@@ -31,7 +31,7 @@
 
 learn <- function(assign.env = parent.frame(1)) {
   cat("| Welcome to polyglot! \n")
-  cat("| Please choose a dataset to study, or type 0 to exit. \n")
+  cat("| Please choose a dataset to study, or type 0 to exit.")
   if(!exists("sessionStartTime")) {
     sessionStartTime <- Sys.time()
     assign("sessionStartTime", sessionStartTime, envir = assign.env)
