@@ -26,12 +26,12 @@ sessionQuestions <- function(assign.env = parent.frame(1)) {
   if(as.Date(sessionDataset$Date[1]) <= Sys.Date()) { # check if rows to learn
     message(paste("| Question:", sessionDataset[1,1],""))
   } else {
-    message(paste("| 0 row to learn... Back to menu. \n"))
+    message(paste("| 0 row to learn... Back to menu."))
     return(learn())
   }
   switch(menu(c("Show answer", "Hard", "Good", "Easy", "Hint/Example", "Back to menu")) + 1,
          return(sessionExit()),
-         message(paste0("| Answer: ", sessionDataset[1,2], "\n")),
+         message(paste0("| Answer: ", sessionDataset[1,2], "")),
          sessionDataset$Score[1] <- sessionDataset$Score[1] + 1,
          sessionDataset$Score[1] <- sessionDataset$Score[1] + 2,
          if(exists("sessionDataset")) {
@@ -41,9 +41,9 @@ sessionQuestions <- function(assign.env = parent.frame(1)) {
            assign("sessionDataset", sessionDataset, envir = assign.env)
          },
          if (names(sessionDataset[3]) != "Score") {
-           message(paste("| Hint/Example:", sessionDataset[1,3],"\n"))
+           message(paste("| Hint/Example:", sessionDataset[1,3],""))
          } else {
-           message(paste("| No Hint/Example in this dataset.\n"))
+           message(paste("| No Hint/Example in this dataset."))
          },
          return(learn()))
   sessionDataset <- sessionDataset[order(sessionDataset$Score), ] # reorder dataset
