@@ -13,11 +13,11 @@ sessionExit <- function(assign.env = parent.frame(1)) {
   sessionEndTime <- Sys.time()
   sessionTimer <- as.numeric(sessionEndTime - sessionStartTime, units = "mins")
   if(round(sessionTimer) <= 1) {
-    message(paste("| Learning session time:", round(sessionTimer),"minute."))
+    cat(paste("| Learning session time:", round(sessionTimer),"minute. \n"))
   } else {
-    message(paste("| Learning session time:", round(sessionTimer),"minutes."))
+    cat(paste("| Learning session time:", round(sessionTimer),"minutes. \n"))
     }
-  message("| Learning score saved. Cleaning parent environment...")
+  cat("| Learning score saved. Cleaning parent environment... \n")
   if(exists("sessionDataset")) {
     rm(sessionDataset, envir = globalenv())
   }
@@ -27,6 +27,6 @@ sessionExit <- function(assign.env = parent.frame(1)) {
   if(exists("sessionStartTime")) {
     rm(sessionStartTime, envir = globalenv())
   }
-  message("| Leaving polyglot now. Type learn() to resume.")
+  cat("| Leaving polyglot now. Type learn() to resume. \n")
   invisible()
 }
