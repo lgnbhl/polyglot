@@ -31,21 +31,21 @@ sessionQuestions <- function(assign.env = parent.frame(1)) {
   }
   switch(menu(c("Show answer", "Hard", "Good", "Easy", "Hint/Example", "Back to menu")) + 1,
          return(sessionExit()),
-         message(paste0("| Answer: ", sessionDataset[1,2], "")), # "Hard"
-         if(exists("sessionDataset")) { # "Good"
+         message(paste0("| Answer: ", sessionDataset[1,2], "")), # "Show answer"
+         if(exists("sessionDataset")) { # "Hard"
            sessionDataset$Score[1] <- sessionDataset$Score[1] + 1
-           if(sessionDataset$Repetition[1] > 0){
-             sessionDataset$Repetition[1] <- sessionDataset$Repetition[1] + 1
+           assign("sessionDataset", sessionDataset, envir = assign.env)
+           if(sessionDataset$Repetition[1] > 0){ # remove 1 in repetition if "Hard"
+             sessionDataset$Repetition[1] <- sessionDataset$Repetition[1] - 1
              assign("sessionDataset", sessionDataset, envir = assign.env)
             }
-           assign("sessionDataset", sessionDataset, envir = assign.env)
-          },
-          if(exists("sessionDataset")) { # "Good"
+         },
+         if(exists("sessionDataset")) { # "Good"
             sessionDataset$Score[1] <- sessionDataset$Score[1] + 2
             assign("sessionDataset", sessionDataset, envir = assign.env)
-          },
-          # simplified SuperMemo algorithm: https://www.supermemo.com/articles/paper.htm
-          if(sessionDataset$Repetition[1] == 0) { # "Easy"
+         },
+         # simplified SuperMemo algorithm: https://www.supermemo.com/articles/paper.htm
+         if(sessionDataset$Repetition[1] == 0) { # "Easy"
                sessionDataset$Repetition[1] <- sessionDataset$Repetition[1] + 1
                sessionDataset$Score[1] <- sessionDataset$Score[1] + 4
                newDate <- as.Date(sessionDataset$Date[1]) + 4 # add 4 days
@@ -102,9 +102,9 @@ sessionQuestions <- function(assign.env = parent.frame(1)) {
            },
          if (names(sessionDataset[3]) != "Score") { # "Hint/Example"
            message(paste("| Hint/Example:", sessionDataset[1,3],""))
-         } else {
+           } else {
            message(paste("| No Hint/Example in this dataset."))
-          },
+         },
          return(learn()))
   sessionDataset <- sessionDataset[order(sessionDataset$Score), ] # reorder dataset
   assign("sessionDataset", sessionDataset, envir = assign.env)
