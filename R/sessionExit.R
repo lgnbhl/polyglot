@@ -17,7 +17,7 @@ sessionExit <- function(assign.env = parent.frame(1)) {
   } else {
     cat(paste("| Learning session time:", round(sessionTimer),"minutes. \n"))
     }
-  cat("| Learning score saved. Cleaning parent environment... \n")
+  cat("| Learning dataset saved. Cleaning parent environment... \n")
   if(exists("sessionDataset")) {
     rm(sessionDataset, envir = globalenv())
   }
