@@ -72,11 +72,11 @@ learn <- function(assign.env = parent.frame(1)) {
       cat(paste("|", length(which(sessionDataset$Date <= Sys.Date())),"rows left to learn. \n"))
         if(length(which(sessionDataset$Date <= Sys.Date())) == 1) {
         cat(paste("| 1 row left to learn. \n"))
+        }
       } else {
       sessionDataset$Date <- rep(Sys.Date(), nrow(sessionDataset)) # add today date
       assign("sessionDataset", sessionDataset, envir = assign.env)
       write.csv(sessionDataset, file = paste0("", datasetAbsolutePath, ""), row.names = FALSE)
-      }
     }
     # if NAs exist in the Date variable, replace by today
     sessionDataset$Date[is.na(sessionDataset$Date)] <- Sys.Date()
