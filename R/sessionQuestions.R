@@ -23,7 +23,12 @@ invisible(if(getRversion() >= "2.15.1") utils::globalVariables(c("sessionStartTi
 
 sessionQuestions <- function(assign.env = parent.frame(1)) {
   sessionDataset <- read.csv(paste0("", datasetAbsolutePath,""), stringsAsFactors = FALSE)
-  message(paste("| Question:", sessionDataset[1,1],""))
+  if(as.Date(sessionDataset$Date[1]) <= Sys.Date()) { # check if rows to learn
+    message(paste("| Question:", sessionDataset[1,1],""))
+  } else {
+    message(paste("| 0 row to learn... Back to menu. \n"))
+    return(learn())
+  }
   switch(menu(c("Show answer", "Hard", "Good", "Easy", "Hint/Example", "Back to menu")) + 1,
          return(sessionExit()),
          message(paste0("| Answer: ", sessionDataset[1,2], "\n")),
