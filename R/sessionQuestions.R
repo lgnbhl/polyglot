@@ -26,7 +26,7 @@ sessionQuestions <- function(assign.env = parent.frame(1)) {
   if(as.Date(sessionDataset$Date[1]) <= Sys.Date()) { # check if rows to learn
     message(paste("| Question:", sessionDataset[1,1],""))
   } else {
-    message(paste("| 0 row to learn... Back to menu."))
+    message(paste("| 0 row to learn... Back to menu. \n"))
     return(learn())
   }
   switch(menu(c("Show answer", "Hard", "Good", "Easy", "Hint/Example", "Back to menu")) + 1,
