@@ -80,6 +80,15 @@ learn <- function(assign.env = parent.frame(1)) {
     }
     # if NAs exist in the Date variable, replace by today
     sessionDataset$Date[is.na(sessionDataset$Date)] <- Sys.Date()
+    # Add Repetition variable if not existing
+    if (any(names(sessionDataset) != "Repetition")) {
+      sessionDataset$Repetition <- rep(as.numeric(0), nrow(sessionDataset))
+      assign("sessionDataset", sessionDataset, envir = assign.env)
+      write.csv(sessionDataset, file = paste0("", datasetAbsolutePath, ""), row.names = FALSE)
+    }
+    # if NAs exist in the Repetition variable, replace by 0
+    sessionDataset$Repetition[is.na(sessionDataset$Repetition)] <- 0
+    # assign and write dataset
     assign("sessionDataset", sessionDataset, envir = assign.env)
     write.csv(sessionDataset, file = paste0("", datasetAbsolutePath, ""), row.names = FALSE)
     return(sessionQuestions())
