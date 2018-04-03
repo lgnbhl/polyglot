@@ -23,100 +23,84 @@ invisible(if(getRversion() >= "2.15.1") utils::globalVariables(c("sessionStartTi
 
 sessionQuestions <- function(assign.env = parent.frame(1)) {
   sessionDataset <- read.csv(paste0("", datasetAbsolutePath,""), stringsAsFactors = FALSE)
-  if(as.Date(sessionDataset$Date[1]) <= Sys.Date()) { # check if rows to learn
+  
+  # check if rows to learn for current session
+  if(as.Date(sessionDataset$Date[1]) <= Sys.Date()) {
     message(paste("| Question:", sessionDataset[1,1],""))
   } else {
     message(paste("| 0 row to learn... Back to menu. \n"))
     return(learn())
   }
+  
+  # space repetition learning algorithm based on SuperMemo 2. 
+  # reference: https://www.supermemo.com/english/ol/sm2.htm
+  
   switch(menu(c("Show answer", "Hard", "Good", "Easy", "Hint/Example", "Back to menu")) + 1,
          return(sessionExit()),
-         message(paste0("| Answer: ", sessionDataset[1,2], "")), # "Show answer"
-         if(exists("sessionDataset")) { # "Hard"
+         # "Show answer"
+         message(paste0("| Answer: ", sessionDataset[1,2], "")),
+         # "Hard" (fail and again)
+         if(exists("sessionDataset")) {
            sessionDataset$Score[1] <- sessionDataset$Score[1] + 1
            assign("sessionDataset", sessionDataset, envir = assign.env)
-           if(sessionDataset$Repetition[1] > 0){ # remove 1 in repetition if "Hard"
-             sessionDataset$Repetition[1] <- sessionDataset$Repetition[1] - 1
-             assign("sessionDataset", sessionDataset, envir = assign.env)
-            }
+           sessionDataset$eFactor[1] <- 2.5 #default eFactor
+           assign("sessionDataset", sessionDataset, envir = assign.env)
+           sessionDataset$Interval[1] <- as.difftime(0, units = "days") #0 day interval
+           assign("sessionDataset", sessionDataset, envir = assign.env)
          },
-         if(exists("sessionDataset")) { # "Good"
+         # "Good" (again)
+         if(exists("sessionDataset")) {
             sessionDataset$Score[1] <- sessionDataset$Score[1] + 2
             assign("sessionDataset", sessionDataset, envir = assign.env)
          },
-         # simplified SuperMemo algorithm: https://www.supermemo.com/articles/paper.htm
-         if(sessionDataset$Repetition[1] == 0) { # "Easy"
+         # "Easy" (pass)
+         if(sessionDataset$Repetition[1] == 0) {
                sessionDataset$Repetition[1] <- sessionDataset$Repetition[1] + 1
                assign("sessionDataset", sessionDataset, envir = assign.env)
                sessionDataset$Score[1] <- sessionDataset$Score[1] + 4
-               newDate <- as.Date(sessionDataset$Date[1]) + 4 # add 4 days
-               sessionDataset$Date[1] <- as.character.Date(newDate)
+               assign("sessionDataset", sessionDataset, envir = assign.env)
+               sessionDataset$Interval[1] <- as.difftime(1, units = "days") #+1 day
+               assign("sessionDataset", sessionDataset, envir = assign.env)
+               dueDate_new <- as.Date(sessionDataset$dueDate[1]) + sessionDataset$Interval[1]
+               assign("dueDate_new", dueDate_new, envir = assign.env)
+               sessionDataset$dueDate[1] <- as.character.Date(dueDate_new)
                assign("sessionDataset", sessionDataset, envir = assign.env)
            } else if (sessionDataset$Repetition[1] == 1) {
                sessionDataset$Repetition[1] <- sessionDataset$Repetition[1] + 1
                assign("sessionDataset", sessionDataset, envir = assign.env)
                sessionDataset$Score[1] <- sessionDataset$Score[1] + 4
-               newDate <- as.Date(sessionDataset$Date[1]) + 7 # add 7 days
-               sessionDataset$Date[1] <- as.character.Date(newDate)
                assign("sessionDataset", sessionDataset, envir = assign.env)
-           } else if (sessionDataset$Repetition[1] == 2) {
+               sessionDataset$Interval[1] <- as.difftime(7, units = "days") #+7 day
+               assign("sessionDataset", sessionDataset, envir = assign.env)
+               dueDate_new <- as.Date(sessionDataset$dueDate[[1]]) + sessionDataset$Interval[1]
+               assign("dueDate_new", dueDate_new, envir = assign.env)
+               sessionDataset$dueDate[1] <- as.character.Date(dueDate_new)
+               assign("sessionDataset", sessionDataset, envir = assign.env)
+           } else if (sessionDataset$Repetition[1] > 1) {
                sessionDataset$Repetition[1] <- sessionDataset$Repetition[1] + 1
                assign("sessionDataset", sessionDataset, envir = assign.env)
                sessionDataset$Score[1] <- sessionDataset$Score[1] + 4 
-               newDate <- as.Date(sessionDataset$Date[1]) + 12 # add 12 days
-               sessionDataset$Date[1] <- as.character.Date(newDate)
+               # SuperMemo 2 algorithm here:
+               sessionDataset$eFactor[1] <- max(1.3, sessionDataset$eFactor[[1]]+(0.1-(5-5)*(0.08+(5-5)*0.02)))
                assign("sessionDataset", sessionDataset, envir = assign.env)
-           } else if (sessionDataset$Repetition[1] == 3) {
-               sessionDataset$Repetition[1] <- sessionDataset$Repetition[1] + 1
+               sessionDataset$Interval[1] <- (sessionDataset$Interval[[1]] - 1)*sessionDataset$eFactor[[1]]
                assign("sessionDataset", sessionDataset, envir = assign.env)
-               sessionDataset$Score[1] <- sessionDataset$Score[1] + 4
-               newDate <- as.Date(sessionDataset$Date[1]) + 20 # add 20 days
-               sessionDataset$Date[1] <- as.character.Date(newDate)
-               assign("sessionDataset", sessionDataset, envir = assign.env)
-           } else if (sessionDataset$Repetition[1] == 4) {
-               sessionDataset$Repetition[1] <- sessionDataset$Repetition[1] + 1
-               assign("sessionDataset", sessionDataset, envir = assign.env)
-               sessionDataset$Score[1] <- sessionDataset$Score[1] + 4
-               newDate <- as.Date(sessionDataset$Date[1]) + 30 # add 1 month
-               sessionDataset$Date[1] <- as.character.Date(newDate)
-               assign("sessionDataset", sessionDataset, envir = assign.env)
-           } else if (sessionDataset$Repetition[1] == 5) {
-               sessionDataset$Repetition[1] <- sessionDataset$Repetition[1] + 1
-               assign("sessionDataset", sessionDataset, envir = assign.env)
-               sessionDataset$Score[1] <- sessionDataset$Score[1] + 4
-               newDate <- as.Date(sessionDataset$Date[1]) + 60 # add 2 months
-               sessionDataset$Date[1] <- as.character.Date(newDate)
-               assign("sessionDataset", sessionDataset, envir = assign.env)
-           } else if (sessionDataset$Repetition[1] == 6) {
-               sessionDataset$Repetition[1] <- sessionDataset$Repetition[1] + 1
-               assign("sessionDataset", sessionDataset, envir = assign.env)
-               sessionDataset$Score[1] <- sessionDataset$Score[1] + 4
-               newDate <- as.Date(sessionDataset$Date[1]) + 90 # add 3 months
-               sessionDataset$Date[1] <- as.character.Date(newDate)
-               assign("sessionDataset", sessionDataset, envir = assign.env)
-           } else if (sessionDataset$Repetition[1] == 7) {
-               sessionDataset$Repetition[1] <- sessionDataset$Repetition[1] + 1
-               assign("sessionDataset", sessionDataset, envir = assign.env)
-               sessionDataset$Score[1] <- sessionDataset$Score[1] + 4
-               newDate <- as.Date(sessionDataset$Date[1]) + 150 # add 5 months
-               sessionDataset$Date[1] <- as.character.Date(newDate)
-               assign("sessionDataset", sessionDataset, envir = assign.env)
-           } else if (sessionDataset$Repetition[1] == 8) {
-               sessionDataset$Repetition[1] <- sessionDataset$Repetition[1] + 1
-               assign("sessionDataset", sessionDataset, envir = assign.env)
-               sessionDataset$Score[1] <- sessionDataset$Score[1] + 4
-               newDate <- as.Date(sessionDataset$Date[1]) + 270 # add 9 months
-               sessionDataset$Date[1] <- as.character.Date(newDate)
+               dueDate_new <- as.Date(sessionDataset$dueDate[[1]]) + sessionDataset$Interval[[1]]
+               assign("dueDate_new", dueDate_new, envir = assign.env)
+               sessionDataset$dueDate[1] <- as.character.Date(dueDate_new)
                assign("sessionDataset", sessionDataset, envir = assign.env)
            },
-         if (names(sessionDataset[3]) != "Score") { # "Hint/Example"
+         # "Hint/Example"
+         if (names(sessionDataset[3]) != "Score") {
            message(paste("| Hint/Example:", sessionDataset[1,3],""))
            } else {
            message(paste("| No Hint/Example in this dataset."))
          },
          return(learn()))
-  sessionDataset <- sessionDataset[order(sessionDataset$Score), ] # reorder dataset
+  # reorder dataset by dueDate and Score
+  sessionDataset <- sessionDataset[order(sessionDataset$dueDate, sessionDataset$Score), ]
   assign("sessionDataset", sessionDataset, envir = assign.env)
+  
   write.csv(sessionDataset, file = paste0("", datasetAbsolutePath, ""), row.names = FALSE)
   invisible()
   return(sessionQuestions()) # create loop
