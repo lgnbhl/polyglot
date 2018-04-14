@@ -65,6 +65,7 @@ sessionQuestions <- function(assign.env = parent.frame(1)) {
                assign("dueDate_new", dueDate_new, envir = assign.env)
                sessionDataset$dueDate[1] <- as.character.Date(dueDate_new)
                assign("sessionDataset", sessionDataset, envir = assign.env)
+               write.csv(sessionDataset, file = paste0("", datasetAbsolutePath, ""), row.names = FALSE)
            } else if (sessionDataset$Repetition[1] == 1) {
                sessionDataset$Repetition[1] <- sessionDataset$Repetition[1] + 1
                assign("sessionDataset", sessionDataset, envir = assign.env)
@@ -76,6 +77,7 @@ sessionQuestions <- function(assign.env = parent.frame(1)) {
                assign("dueDate_new", dueDate_new, envir = assign.env)
                sessionDataset$dueDate[1] <- as.character.Date(dueDate_new)
                assign("sessionDataset", sessionDataset, envir = assign.env)
+               write.csv(sessionDataset, file = paste0("", datasetAbsolutePath, ""), row.names = FALSE)
            } else if (sessionDataset$Repetition[1] > 1) {
                sessionDataset$Repetition[1] <- sessionDataset$Repetition[1] + 1
                assign("sessionDataset", sessionDataset, envir = assign.env)
@@ -89,6 +91,7 @@ sessionQuestions <- function(assign.env = parent.frame(1)) {
                assign("dueDate_new", dueDate_new, envir = assign.env)
                sessionDataset$dueDate[1] <- as.character.Date(dueDate_new)
                assign("sessionDataset", sessionDataset, envir = assign.env)
+               write.csv(sessionDataset, file = paste0("", datasetAbsolutePath, ""), row.names = FALSE)
            },
          # "Hint/Example"
          if (names(sessionDataset[3]) != "Score") {
