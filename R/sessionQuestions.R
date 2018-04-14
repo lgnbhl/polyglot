@@ -26,7 +26,7 @@ sessionQuestions <- function(assign.env = parent.frame(1)) {
   
   # check if rows to learn for current session
   if(as.Date(sessionDataset$dueDate[1]) <= as.Date(Sys.Date())) {
-    message(paste("| Question:", sessionDataset[1,1],""))
+    message(paste("| Question:", sessionDataset[1,1],"\n"))
   } else {
     message(paste("| 0 row to learn... Back to menu. \n"))
     return(learn())
