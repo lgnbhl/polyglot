@@ -61,7 +61,7 @@ sessionQuestions <- function(assign.env = parent.frame(1)) {
                assign("sessionDataset", sessionDataset, envir = assign.env)
                sessionDataset$Interval[1] <- as.difftime(1, units = "days") #+1 day
                assign("sessionDataset", sessionDataset, envir = assign.env)
-               dueDate_new <- as.Date(sessionDataset$dueDate[1]) + sessionDataset$Interval[1]
+               dueDate_new <- Sys.Date() + sessionDataset$Interval[1]
                assign("dueDate_new", dueDate_new, envir = assign.env)
                sessionDataset$dueDate[1] <- as.character.Date(dueDate_new)
                assign("sessionDataset", sessionDataset, envir = assign.env)
@@ -72,7 +72,7 @@ sessionQuestions <- function(assign.env = parent.frame(1)) {
                assign("sessionDataset", sessionDataset, envir = assign.env)
                sessionDataset$Interval[1] <- as.difftime(7, units = "days") #+7 day
                assign("sessionDataset", sessionDataset, envir = assign.env)
-               dueDate_new <- as.Date(sessionDataset$dueDate[[1]]) + sessionDataset$Interval[1]
+               dueDate_new <- Sys.Date() + sessionDataset$Interval[1]
                assign("dueDate_new", dueDate_new, envir = assign.env)
                sessionDataset$dueDate[1] <- as.character.Date(dueDate_new)
                assign("sessionDataset", sessionDataset, envir = assign.env)
@@ -85,7 +85,7 @@ sessionQuestions <- function(assign.env = parent.frame(1)) {
                assign("sessionDataset", sessionDataset, envir = assign.env)
                sessionDataset$Interval[1] <- (sessionDataset$Interval[[1]] - 1)*sessionDataset$eFactor[[1]]
                assign("sessionDataset", sessionDataset, envir = assign.env)
-               dueDate_new <- as.Date(sessionDataset$dueDate[[1]]) + sessionDataset$Interval[[1]]
+               dueDate_new <- Sys.Date() + sessionDataset$Interval[[1]]
                assign("dueDate_new", dueDate_new, envir = assign.env)
                sessionDataset$dueDate[1] <- as.character.Date(dueDate_new)
                assign("sessionDataset", sessionDataset, envir = assign.env)
