@@ -71,7 +71,7 @@ sessionQuestions <- function(assign.env = parent.frame(1)) {
                assign("sessionDataset", sessionDataset, envir = assign.env)
                sessionDataset$Score[1] <- sessionDataset$Score[1] + 4
                assign("sessionDataset", sessionDataset, envir = assign.env)
-               sessionDataset$Interval[1] <- as.difftime(7, units = "days") #+7 day
+               sessionDataset$Interval[1] <- as.difftime(4, units = "days") #+4 days (like Anki)
                assign("sessionDataset", sessionDataset, envir = assign.env)
                dueDate_new <- Sys.Date() + sessionDataset$Interval[1]
                assign("dueDate_new", dueDate_new, envir = assign.env)
