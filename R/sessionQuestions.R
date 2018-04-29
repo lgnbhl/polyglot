@@ -35,7 +35,7 @@ sessionQuestions <- function(assign.env = parent.frame(1)) {
   # space repetition learning algorithm based on SuperMemo 2. 
   # reference: https://www.supermemo.com/english/ol/sm2.htm
   
-  switch(menu(c("Show answer", "Hard", "Good", "Easy", "Hint/Example", "Back to menu")) + 1,
+  switch(menu(c("Show answer", "Hard", "Good", "Easy", "Hint/Example", paste0("Back to menu (",length(which(sessionDataset$dueDate <= as.Date(Sys.Date())))," rows left to learn)"))) + 1,
          return(sessionExit()),
          # "Show answer"
          message(paste0("| Answer: ", sessionDataset[1,2], "")),
