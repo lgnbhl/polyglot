@@ -24,7 +24,8 @@ invisible(if(getRversion() >= "2.15.1") utils::globalVariables(c("sessionStartTi
 sessionQuestions <- function(assign.env = parent.frame(1)) {
   sessionDataset <- read.csv(paste0("", datasetAbsolutePath,""), stringsAsFactors = FALSE)
   
-  # check if rows to learn for current session
+  # check if rows to learn for current session and print question
+  
   if(as.Date(sessionDataset$dueDate[1]) <= as.Date(Sys.Date())) {
     message(paste("| Question:", sessionDataset[1,1],"\n"))
   } else {
@@ -32,13 +33,28 @@ sessionQuestions <- function(assign.env = parent.frame(1)) {
     return(learn())
   }
   
-  # space repetition learning algorithm based on SuperMemo 2. 
-  # reference: https://www.supermemo.com/english/ol/sm2.htm
+  # menu 1, based on Anki
+  # ref: https://apps.ankiweb.net/
   
-  switch(menu(c("Show answer", "Hard", "Good", "Easy", "Hint/Example", paste0("Back to menu (",length(which(sessionDataset$dueDate <= as.Date(Sys.Date())))," left to learn)"))) + 1,
+  switch(menu(c("Show answer", "Hint", paste0("Back to menu (",length(which(sessionDataset$dueDate <= as.Date(Sys.Date())))," left to learn)"))) + 1,
          return(sessionExit()),
          # "Show answer"
          message(paste0("| Answer: ", sessionDataset[1,2], "")),
+         # "Hint/Example"
+         if (names(sessionDataset[3]) != "Score") {
+           message(paste("| Hint:", sessionDataset[1,3],""))
+           return(sessionQuestions())
+           } else {
+           message(paste("| No Hint in this dataset."))
+           return(sessionQuestions())
+         },
+         return(learn()))
+  
+  # space repetition learning algorithm based on SuperMemo 2. 
+  # reference: https://www.supermemo.com/english/ol/sm2.htm
+  
+  switch(menu(c("Hard", "Good", "Easy")) + 1,
+         return(sessionExit()),
          # "Hard" (fail and again)
          if(exists("sessionDataset")) {
            sessionDataset$Score[1] <- sessionDataset$Score[1] + 1
@@ -92,14 +108,8 @@ sessionQuestions <- function(assign.env = parent.frame(1)) {
                sessionDataset$dueDate[1] <- as.character.Date(dueDate_new)
                assign("sessionDataset", sessionDataset, envir = assign.env)
                write.csv(sessionDataset, file = paste0("", datasetAbsolutePath, ""), row.names = FALSE)
-           },
-         # "Hint/Example"
-         if (names(sessionDataset[3]) != "Score") {
-           message(paste("| Hint/Example:", sessionDataset[1,3],""))
-           } else {
-           message(paste("| No Hint/Example in this dataset."))
-         },
-         return(learn()))
+           })
+  
   # reorder dataset by dueDate and Score
   sessionDataset <- sessionDataset[order(sessionDataset$dueDate, sessionDataset$Score), ]
   assign("sessionDataset", sessionDataset, envir = assign.env)
