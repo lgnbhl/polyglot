@@ -42,7 +42,7 @@ sessionQuestions <- function(assign.env = parent.frame(1)) {
          message(paste0("| Answer: ", sessionDataset[1,2], "")),
          # "Hint/Example"
          if (names(sessionDataset[3]) != "Score") {
-           message(paste("| Hint:", sessionDataset[1,3],""))
+           message(paste("| Hint:", sessionDataset[1,3],"\n"))
            return(sessionQuestions())
            } else {
            message(paste("| No Hint in this dataset."))
