@@ -22,12 +22,12 @@
 invisible(if(getRversion() >= "2.15.1") utils::globalVariables(c("sessionStartTime", "sessionDataset", "datasetAbsolutePath")))
 
 sessionQuestions <- function(assign.env = parent.frame(1)) {
+  
   sessionDataset <- read.csv(paste0("", datasetAbsolutePath,""), stringsAsFactors = FALSE)
   
   # check if rows to learn for current session and print question
-  
   if(as.Date(sessionDataset$dueDate[1]) <= as.Date(Sys.Date())) {
-    message(paste("| Question:", sessionDataset[1,1],"\n"))
+    message(paste("| Question:", sessionDataset[1,1],""))
   } else {
     message(paste("| 0 row to learn... Back to menu. \n"))
     return(learn())
