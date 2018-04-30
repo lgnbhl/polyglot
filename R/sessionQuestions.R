@@ -53,11 +53,7 @@ sessionQuestions <- function(assign.env = parent.frame(1)) {
   # space repetition learning algorithm, inspired by SuperMemo 2. 
   # reference: https://www.supermemo.com/english/ol/sm2.htm
   
-  switch(menu(c("Hard", 
-                "Good", 
-                if(sessionDataset$Repetition[1] == 0){ paste0("Easy (1d)")}
-                else if(sessionDataset$Repetition[1] == 1){ paste0("Easy (4d)")} 
-                else{ paste0("Easy")})),
+  switch(menu(c("Hard", "Good", if(sessionDataset$Repetition[1] == 0){ paste0("Easy (1d)")} else if(sessionDataset$Repetition[1] == 1){ paste0("Easy (4d)")}  else{ paste0("Easy")})),
          # "Hard" (fail and again)
          if(exists("sessionDataset")) {
            sessionDataset$Score[1] <- sessionDataset$Score[1] + 1
