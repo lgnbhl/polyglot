@@ -33,7 +33,7 @@ sessionQuestions <- function(assign.env = parent.frame(1)) {
     return(learn())
   }
   
-  # menu 1, based on Anki
+  # menu 1, inspired by Anki app
   # ref: https://apps.ankiweb.net/
   
   switch(menu(c("Show answer", "Hint", paste0("Back to menu (",length(which(sessionDataset$dueDate <= as.Date(Sys.Date())))," left to learn)"))) + 1,
@@ -50,10 +50,14 @@ sessionQuestions <- function(assign.env = parent.frame(1)) {
          },
          return(learn()))
   
-  # space repetition learning algorithm based on SuperMemo 2. 
+  # space repetition learning algorithm, inspired by SuperMemo 2. 
   # reference: https://www.supermemo.com/english/ol/sm2.htm
   
-  switch(menu(c("Hard", "Good", "Easy")) + 1,
+  switch(menu(c("Hard", "Good",
+               if(sessionDataset$Repetition[1] == 0){ paste0("Easy (1d)")}
+                 else if(sessionDataset$Repetition[1] == 1){ paste0("Easy (4d)")}
+                 else if(sessionDataset$Repetition[1] > 1){ paste0("Easy (", (sessionDataset$Interval[[1]] - 1)*max(1.3, sessionDataset$eFactor[[1]]+(0.1-(5-5)*(0.08+(5-5)*0.02))), "d)")}
+                 else { paste0("Easy")})), + 1,
          return(sessionExit()),
          # "Hard" (fail and again)
          if(exists("sessionDataset")) {
