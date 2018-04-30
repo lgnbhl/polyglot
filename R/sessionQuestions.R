@@ -57,7 +57,7 @@ sessionQuestions <- function(assign.env = parent.frame(1)) {
                if(sessionDataset$Repetition[1] == 0){ paste0("Easy (1d)")}
                  else if(sessionDataset$Repetition[1] == 1){ paste0("Easy (4d)")}
                  else if(sessionDataset$Repetition[1] > 1){ paste0("Easy (", (sessionDataset$Interval[[1]] - 1)*max(1.3, sessionDataset$eFactor[[1]]+(0.1-(5-5)*(0.08+(5-5)*0.02))), "d)")}
-                 else { paste0("Easy")})), + 1,
+                 else { paste0("Easy")})),
          return(sessionExit()),
          # "Hard" (fail and again)
          if(exists("sessionDataset")) {
