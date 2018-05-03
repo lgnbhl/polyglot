@@ -90,6 +90,8 @@ learn <- function(assign.env = parent.frame(1)) {
     # If NAs exist in the dueDate variable, replace by today date
     sessionDataset$dueDate[is.na(sessionDataset$dueDate)] <- as.Date(Sys.Date())
     assign("sessionDataset", sessionDataset, envir = assign.env)
+    sessionDataset$dueDate[which(sessionDataset$dueDate == "")] <- as.Date(Sys.Date())
+    assign("sessionDataset", sessionDataset, envir = assign.env)
     
     # Add numeric Repetition variable if not existing
     if (any(names(sessionDataset) == "Repetition")) {
