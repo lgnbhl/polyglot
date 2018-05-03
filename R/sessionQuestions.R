@@ -25,6 +25,10 @@ sessionQuestions <- function(assign.env = parent.frame(1)) {
   
   sessionDataset <- read.csv(paste0("", datasetAbsolutePath,""), stringsAsFactors = FALSE)
   
+  # order dataset by dueDate and Score
+  sessionDataset <- sessionDataset[order(sessionDataset$dueDate, sessionDataset$Score), ]
+  assign("sessionDataset", sessionDataset, envir = assign.env)
+  
   # check if rows to learn for current session and print question
   if(as.Date(sessionDataset$dueDate[1]) <= as.Date(Sys.Date())) {
     message(paste("| Question:", sessionDataset[1,1],""))
