@@ -92,8 +92,8 @@ learn <- function(assign.env = parent.frame(1)) {
     assign("sessionDataset", sessionDataset, envir = assign.env)
     
     # TO DO: fix error when new NA character
-    sessionDataset$dueDate[which(sessionDataset$dueDate == "")] <- as.Date.character(Sys.Date(), format = "%Y-%m-%d")
-    assign("sessionDataset", sessionDataset, envir = assign.env)
+    #sessionDataset$dueDate[which(sessionDataset$dueDate == "")] <- as.Date.character(Sys.Date(), format = "%Y-%m-%d")
+    #assign("sessionDataset", sessionDataset, envir = assign.env)
     
     # Add numeric Repetition variable if not existing
     if (any(names(sessionDataset) == "Repetition")) {
