@@ -47,7 +47,7 @@ learn <- function(assign.env = parent.frame(1)) {
   if (datasetName == "") {
     sessionExit() # 0 selected, exit the learning session
   } else {
-    sessionDataset <- read.csv(paste0("", datasetAbsolutePath,""), stringsAsFactors = FALSE, na.strings = "")
+    sessionDataset <- read.csv(paste0("", datasetAbsolutePath,""), stringsAsFactors = FALSE)
     assign("sessionDataset", sessionDataset, envir = assign.env)
     
     # Check if the dataset has at least two colomns
