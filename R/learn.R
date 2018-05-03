@@ -88,7 +88,8 @@ learn <- function(assign.env = parent.frame(1)) {
       write.csv(sessionDataset, file = paste0("", datasetAbsolutePath, ""), row.names = FALSE)
     }
     # If NAs exist in the dueDate variable, replace by today date
-    sessionDataset$dueDate[which(sessionDataset$dueDate == "")] <- as.character(Sys.Date())
+    sessionDataset$dueDate[which(sessionDataset$dueDate == "")] <- as.Date(Sys.Date())
+    #sessionDataset$dueDate <- as.Date(sessionDataset$dueDate)
     assign("sessionDataset", sessionDataset, envir = assign.env)
     
     # Add numeric Repetition variable if not existing
