@@ -88,7 +88,7 @@ learn <- function(assign.env = parent.frame(1)) {
       write.csv(sessionDataset, file = paste0("", datasetAbsolutePath, ""), row.names = FALSE)
     }
     # If NAs exist in the dueDate variable, replace by today date
-    sessionDataset$dueDate[is.na(sessionDataset$dueDate)] <- as.Date(Sys.Date())
+    sessionDataset$dueDate[is.na(sessionDataset$dueDate)] <- as.Date.character(Sys.Date())
     assign("sessionDataset", sessionDataset, envir = assign.env)
     
     # TO DO: fix error when new NA character
