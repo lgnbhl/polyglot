@@ -58,9 +58,9 @@ sessionQuestions <- function(assign.env = parent.frame(1)) {
   # reference: https://www.supermemo.com/english/ol/sm2.htm
   
   switch(menu(c("Hard", "Good", 
-                if(sessionDataset$Repetition[1] == 0){ paste0("Easy (1d)")} 
-                  else if(sessionDataset$Repetition[1] == 1){ paste0("Easy (4d)")}
-                    else if(sessionDataset$Repetition[1] > 1){paste0("Easy (", (sessionDataset$Interval[[1]] - 1)*max(1.3, sessionDataset$eFactor[[1]]+(0.1-(5-5)*(0.08+(5-5)*0.02))), "d)")}
+                if(sessionDataset$Repetition[1] == 0){ paste0("Easy (+1 day)")} 
+                  else if(sessionDataset$Repetition[1] == 1){ paste0("Easy (+4 days)")}
+                    else if(sessionDataset$Repetition[1] > 1){paste0("Easy (+", (sessionDataset$Interval[[1]] - 1)*max(1.3, sessionDataset$eFactor[[1]]+(0.1-(5-5)*(0.08+(5-5)*0.02))), " days)")}
                       else{ paste0("Easy")})) + 1,
          return(sessionExit()),
          # "Hard" (fail and again)
