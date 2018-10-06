@@ -5,7 +5,7 @@ The {polyglot} package lets you use the R console as an interactive learning env
 
 To install and run polyglot, type the following in the R console:
 
-```
+``` r
 install.packages("polyglot")
 library(polyglot)
 learn() # to launch the interactive learning environment
@@ -17,7 +17,7 @@ Before launching the interactive environment, be sure to have the appropriate lo
 
 To study French for instance, type the following in the R console:
 
-```
+``` r
 Sys.setlocale("LC_TIME", "French")      # for Windows
 Sys.setlocale("LC_TIME", "fr_FR")       # for macOS
 Sys.setlocale("LC_TIME", "fr_FR.utf8")  # for Modern Linux etc.
@@ -27,7 +27,7 @@ Sys.setlocale("LC_TIME", "fr_FR.utf8")  # for Modern Linux etc.
 
 If you want to open the directory containing the datasets to add yours, type the following:
 
-```
+``` r
 library(polyglot)
 learnDir()
 ```
