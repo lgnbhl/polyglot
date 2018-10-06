@@ -36,7 +36,7 @@ learnDir()
 
 You can also try the [development version](https://github.com/lgnbhl/polyglot) of the package, which implements a simplified [spaced repetition](https://en.wikipedia.org/wiki/Spaced_repetition) learning algorithm.
 
-```
+``` r
 # install.packages("devtools")
 devtools::install_github("lgnbhl/polyglot")
 library(polyglot)
