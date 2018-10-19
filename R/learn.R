@@ -127,6 +127,10 @@ learn <- function(assign.env = parent.frame(1)) {
     sessionDataset$Interval[is.na(sessionDataset$Interval)] <- as.difftime(0, units = "days")
     assign("sessionDataset", sessionDataset, envir = assign.env)
     
+    # reorder dataset by dueDate and Score
+    sessionDataset <- sessionDataset[order(sessionDataset$dueDate, sessionDataset$Score), ]
+    assign("sessionDataset", sessionDataset, envir = assign.env)
+    
     write.csv(sessionDataset, file = paste0("", datasetAbsolutePath, ""), row.names = FALSE)
     return(sessionQuestions())
   }
