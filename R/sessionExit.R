@@ -5,9 +5,9 @@
 #' @details
 #' This function calculates the learning session time and print it. Then, it
 #' cleans the Global Environment if needed and displays a farewell message.
-#' 
+#'
 #' @param assign.env An environment
-#' 
+#'
 
 sessionExit <- function(assign.env = parent.frame(1)) {
   sessionEndTime <- Sys.time()
