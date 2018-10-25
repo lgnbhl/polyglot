@@ -44,7 +44,7 @@ sessionQuestions <- function(assign.env = parent.frame(1)) {
       message(paste("| Question: [see image]"))
       ## PRINT IMAGE
       image <- image_read(sessionDataset[1,1])
-      image <- image_scale(image, "200x")
+      image <- image_scale(image, "x300")
 
       print(image, info = FALSE)
 
@@ -68,7 +68,7 @@ sessionQuestions <- function(assign.env = parent.frame(1)) {
            message(paste("| Answer: [see image]"))
            ## PRINT IMAGE
            image <- image_read(sessionDataset[1,2])
-           image <- image_scale(image, "200x")
+           image <- image_scale(image, "x300")
            print(image, info = FALSE)
          } else {
            message(paste("| Answer:", sessionDataset[1,2],""))
@@ -79,7 +79,7 @@ sessionQuestions <- function(assign.env = parent.frame(1)) {
              message(paste("| Hint: [see image]"))
              ## PRINT IMAGE
              image <- image_read(sessionDataset[1,2])
-             image <- image_scale(image, "200x")
+             image <- image_scale(image, "x300")
              print(image, info = FALSE)
              return(sessionQuestions())
            } else {
