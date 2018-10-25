@@ -1,51 +1,57 @@
 
-The {polyglot} package lets you use the R console as an interactive learning environment in order to memorize any dataset you want. Its main goal is to put foreign language vocabulary learning in the R workflow, so R can also be used to study languages or anything related to flashcards.
+# polyglot <img src="man/figures/logo.png" align="right" />
 
-### Install polyglot
+The **polyglot** package helps you learn foreign language vocabulary or
+any [flashcards](https://en.wikipedia.org/wiki/Flashcard) using R as an
+interactive learning environment. The package implements the popular
+[SuperMemo-2](https://en.wikipedia.org/wiki/SuperMemo) learning
+algorithm which optimizes intervals between repetitions, minimizes the
+time you spend on learning, and helps you achieve your learning goals in
+the most effective way.
 
-To install and run polyglot, type the following in the R console:
+### Installation
 
 ``` r
-install.packages("polyglot")
+devtools::install_github("lgnbhl/polyglot")
+# BEWARE that a new installation overwrites existing CSV files
+```
+
+### Minimal examples
+
+Create a spreadsheet in a [CSV
+format](https://en.wikipedia.org/wiki/Comma-separated_values) with a
+`question` column, an `answer` column and an `hint/example` column
+(optional).
+
+For example, you could make a spreadsheet of 30 basic expressions in
+French (the CSV file is already into the package).
+
+![](man/figures/screenshot1.png)
+
+The spreadsheet should be saved into the `extdata` directory of the
+package.
+
+To open the directory, simply run the `learn_dir()` function.
+
+``` r
 library(polyglot)
+
+learn_dir()
+```
+
+To launch the learning environment, run the `learn()` function. Then
+choose in the interactive menu the file you want to study.
+
+``` r
 learn() # to launch the interactive learning environment
 ```
 
-### Set the appropriate encoding
+The GIF below shows the learning of the CSV file
+`French_30_Basic_Expressions.csv`.
 
-Before launching the interactive environment, be sure to have the appropriate locale settings.
+![](man/figures/screenshot2.gif)
 
-To study French for instance, type the following in the R console:
+For more information on how to use **polyglot**, please read the
+vignette.
 
-``` r
-Sys.setlocale("LC_TIME", "French")      # for Windows
-Sys.setlocale("LC_TIME", "fr_FR")       # for macOS
-Sys.setlocale("LC_TIME", "fr_FR.utf8")  # for Modern Linux etc.
-```
-
-### Add your own datasets
-
-If you want to open the directory containing the datasets to add yours, type the following:
-
-``` r
-library(polyglot)
-learnDir()
-```
-
-### Development version
-
-You can also try the [development version](https://github.com/lgnbhl/polyglot) of the package, which implements a simplified [spaced repetition](https://en.wikipedia.org/wiki/Spaced_repetition) learning algorithm.
-
-``` r
-# install.packages("devtools")
-devtools::install_github("lgnbhl/polyglot")
-library(polyglot)
-learn()
-```
-
-![](https://raw.githubusercontent.com/lgnbhl/lgnbhl.github.io/master/images/polyglot_dev.gif)
-
-
-Go [here](https://lgnbhl.github.io/polyglot) to read a blog post describing the package with more development. 
-
-Happy learning!
+Happy learning\!
