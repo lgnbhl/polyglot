@@ -3,6 +3,11 @@
 \name{sessionQuestions}
 \alias{sessionQuestions}
 \title{Ask questions in the interactive environment}
+\source{
+\url{https://www.supermemo.com/english/ol/sm2.htm}{ SuperMemo-2 algorithm}
+
+\url{https://apps.ankiweb.net/docs/manual.html#what-spaced-repetition-algorithm-does-anki-use}{ Anki algorithm}
+}
 \usage{
 sessionQuestions(assign.env = parent.frame(1))
 }
@@ -10,20 +15,17 @@ sessionQuestions(assign.env = parent.frame(1))
 \item{assign.env}{An environment}
 }
 \description{
-This function will print questions in the interactive learning environment.
+This function will print the questions in the interactive learning environment.
 }
 \details{
 This function reads the selected dataset and print the first row of its first
 colomn, i.e. the question. Then it presents to the user a menu, which gives him
 multiple choices. According to the choice made by the user, the function gives a
-score point, i.e. Hard = +4 points, Good = +2 points, Easy = +1 point. The menu
-also proposes to show the answer (the 2nd column of the row), to give a hint/example,
-or to go back to the main menu. Finally, the function reorders the dataset in order
-to get the lower points score in its first row and return the function once again.
+score point and will return a due date, inspired by the SuperMemo-2 and Anki algorithms.
+The menu also proposes to show the answer (the 2nd column of the row), to give a
+hint/example, or to go back to the main menu. Finally, the function reorders the dataset
+in order to get the lower points score in its first row and return the function once again.
 }
 \note{
 In order to quit, simply type 0.
-}
-\references{
-A blog post describing the package with more development: \url{https://lgnbhl.github.io/learner}
 }
