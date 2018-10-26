@@ -70,7 +70,7 @@ sessionQuestions <- function(assign.env = parent.frame(1)) {
            ## PRINT IMAGE
            image2 <- tryCatch(magick::image_read(sessionDataset[1,2]), error = function(e) paste0("Could not read image at ", sessionDataset[1,2]))
            image2 <- tryCatch(magick::image_scale(image2, "x300"), error = function(e) paste0("Could not scale image at ", sessionDataset[1,2]))
-           print(image1, info = FALSE)
+           print(image2, info = FALSE)
          } else {
            message(paste("| Answer:", sessionDataset[1,2],""))
          },
