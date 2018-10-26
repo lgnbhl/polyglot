@@ -20,6 +20,7 @@
 #' @importFrom utils read.csv
 #' @importFrom utils select.list
 #' @importFrom utils write.csv
+#' @importFrom utils browseURL
 #' @importFrom magick image_read
 #' @importFrom magick image_scale
 #'
@@ -43,10 +44,10 @@ sessionQuestions <- function(assign.env = parent.frame(1)) {
     if(any(sapply(image_ext, function(x) grepl(x, sessionDataset[1,1], fixed = TRUE)))) {
       message(paste("| Question: [see image]"))
       ## PRINT IMAGE
-      image <- image_read(sessionDataset[1,1])
-      image <- image_scale(image, "x300")
 
-      print(image, info = FALSE)
+      image1 <- tryCatch(magick::image_read(sessionDataset[1,1]), error = function(e) paste0("Could not read image at ", sessionDataset[1,1]))
+      image1 <- tryCatch(magick::image_scale(image1, "x300"), error = function(e) paste0("Could not read image at ", sessionDataset[1,1]))
+      print(image1, info = FALSE)
 
     } else {
       message(paste("| Question:", sessionDataset[1,1],""))
@@ -67,9 +68,9 @@ sessionQuestions <- function(assign.env = parent.frame(1)) {
          if(any(sapply(c(".jpg", ".JPG", ".jpeg", ".JPEG", ".png", ".PNG", ".svg", ".SVG", ".gif", ".GIF", ".avi", ".AVI", ".ico", ".ICO", ".icon", ".ICON", ".tiff", ".TIFF"), function(x) grepl(x, sessionDataset[1,2], fixed = TRUE)))) {
            message(paste("| Answer: [see image]"))
            ## PRINT IMAGE
-           image <- image_read(sessionDataset[1,2])
-           image <- image_scale(image, "x300")
-           print(image, info = FALSE)
+           image2 <- tryCatch(magick::image_read(sessionDataset[1,2]), error = function(e) paste0("Could not read image at ", sessionDataset[1,2]))
+           image2 <- tryCatch(magick::image_scale(image2, "x300"), error = function(e) paste0("Could not scale image at ", sessionDataset[1,2]))
+           print(image1, info = FALSE)
          } else {
            message(paste("| Answer:", sessionDataset[1,2],""))
          },
@@ -77,10 +78,9 @@ sessionQuestions <- function(assign.env = parent.frame(1)) {
          if (names(sessionDataset[3]) != "Score") {
            if(any(sapply(c(".jpg", ".JPG", ".jpeg", ".JPEG", ".png", ".PNG", ".svg", ".SVG", ".gif", ".GIF", ".avi", ".AVI", ".ico", ".ICO", ".icon", ".ICON", ".tiff", ".TIFF"), function(x) grepl(x, sessionDataset[1,3], fixed = TRUE)))) {
              message(paste("| Hint: [see image]"))
-             ## PRINT IMAGE
-             image <- image_read(sessionDataset[1,2])
-             image <- image_scale(image, "x300")
-             print(image, info = FALSE)
+             ## If image, open in default browse
+             ## Not in viewer because can overwrite image of Question or Answer
+             utils::browseURL(sessionDataset[1,3])
              return(sessionQuestions())
            } else {
              message(paste("| Hint:", sessionDataset[1,3],""))
