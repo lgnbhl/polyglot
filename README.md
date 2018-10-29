@@ -1,3 +1,4 @@
+![](http://cranlogs.r-pkg.org/badges/grand-total/polyglot)
 
 # polyglot <img src="man/figures/logo.png" align="right" />
 
