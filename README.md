@@ -1,4 +1,3 @@
-![](http://cranlogs.r-pkg.org/badges/grand-total/polyglot)
 
 # polyglot <img src="man/figures/logo.png" align="right" />
 
@@ -52,7 +51,27 @@ The GIF below shows the learning of the CSV file
 
 ![](man/figures/screenshot2.gif)
 
-For more information on how to use **polyglot**, please read the
-vignette.
+### Learn with images
+
+You can add images by putting the Web URL or the [full
+path](https://en.wikipedia.org/wiki/Path_\(computing\)) of your images
+into the spreadsheet rows.
+
+For example, you can study the locations, flags and capitals of [all the
+sovereign
+states](https://en.wikipedia.org/wiki/List_of_sovereign_states) around
+the world. Note that the images into the 3rd column `Hint` are displayed
+into your Web browser.
+
+![](man/figures/polyglot_world.gif)
+
+You could also memorize the recipes of the [74 official
+cocktails](https://en.wikipedia.org/wiki/List_of_IBA_official_cocktails)
+of the International Bartenders Association (IBA).
+
+![](man/figures/polyglot_cocktails.gif)
+
+The CSV files given as examples are
+[here](https://github.com/lgnbhl/polyglot/tree/master/inst/extdata).
 
 Happy learning\!
