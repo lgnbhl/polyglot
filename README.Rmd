@@ -9,7 +9,7 @@ The **polyglot** package helps you learn foreign language vocabulary or any [fla
 ### Installation
 
 ```{r eval=FALSE}
-devtools::install_github("lgnbhl/polyglot")
+install.packages("polyglot") # or devtools::install_github("lgnbhl/polyglot")
 # BEWARE that a new installation overwrites existing CSV files
 ```
 

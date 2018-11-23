@@ -7,12 +7,13 @@ interactive learning environment. The package implements the popular
 [SuperMemo-2](https://en.wikipedia.org/wiki/SuperMemo) learning
 algorithm which optimizes intervals between repetitions, minimizes the
 time you spend on learning, and helps you achieve your learning goals in
-the most effective way.
+the most effective
+way.
 
 ### Installation
 
 ``` r
-devtools::install_github("lgnbhl/polyglot")
+install.packages("polyglot") # or devtools::install_github("lgnbhl/polyglot")
 # BEWARE that a new installation overwrites existing CSV files
 ```
 
