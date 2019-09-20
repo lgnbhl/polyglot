@@ -1,6 +1,6 @@
 <!-- badges: start -->
-[![CRAN
-status](https://www.r-pkg.org/badges/version/polyglot)](https://CRAN.R-project.org/package=polyglot)
+[![CRAN status](https://www.r-pkg.org/badges/version/polyglot)](https://CRAN.R-project.org/package=polyglot)
+[![](http://cranlogs.r-pkg.org/badges/grand-total/polyglot?color=green)](https://cran.r-project.org/package=polyglot)
 <!-- badges: end -->
 
 # polyglot <img src="man/figures/logo.png" align="right" />
