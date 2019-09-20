@@ -1,3 +1,7 @@
+<!-- badges: start -->
+[![CRAN
+status](https://www.r-pkg.org/badges/version/polyglot)](https://CRAN.R-project.org/package=polyglot)
+<!-- badges: end -->
 
 # polyglot <img src="man/figures/logo.png" align="right" />
 
