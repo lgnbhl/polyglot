@@ -2,6 +2,10 @@
 output: github_document
 ---
 
+<!-- badges: start -->
+[![CRAN status](https://www.r-pkg.org/badges/version/polyglot)](https://CRAN.R-project.org/package=polyglot)
+<!-- badges: end -->
+
 # polyglot <img src="man/figures/logo.png" align="right" />
 
 The **polyglot** package helps you learn foreign language vocabulary or any [flashcards](https://en.wikipedia.org/wiki/Flashcard) using R as an interactive learning environment. The package implements the popular [SuperMemo-2](https://en.wikipedia.org/wiki/SuperMemo) learning algorithm which optimizes intervals between repetitions, minimizes the time you spend on learning, and helps you achieve your learning goals in the most effective way.
