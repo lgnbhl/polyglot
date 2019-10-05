@@ -1,0 +1,25 @@
+template:
+  params:
+    bootswatch: cosmo
+
+navbar:
+  left:
+  - text: Home
+    href: index.html
+  - text: Reference
+    href: reference/index.html
+  right:
+   - icon: fa-linkedin
+     href: https://www.linkedin.com/in/felixluginbuhl
+   - icon: fa-twitter
+     href: https://twitter.com/lgnbhl
+   - icon: fa-github
+     href: https://github.com/lgnbhl/polyglot
+   - icon: fa-home
+     href: https://felixluginbuhl.com
+
+reference:
+  - title: "Functions"
+    contents: 
+      - learn
+      - learn_dir
