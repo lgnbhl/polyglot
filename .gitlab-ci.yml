@@ -2,6 +2,6 @@ image: r-base
 
 test:
   script:
-    - R -e 'install.packages(c("utils", "magick")'
+    - R -e 'install.packages(c("utils", "magick"))'
     - R CMD build . --no-build-vignettes --no-manual
     - R CMD check *tar.gz --no-build-vignettes --no-manual
