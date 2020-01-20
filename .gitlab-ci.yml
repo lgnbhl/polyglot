@@ -1,14 +1,6 @@
 image: rocker/r-devel
 
 test:
-  before_script:
-    - wget https://www.imagemagick.org/download/ImageMagick.tar.gz
-    - tar xf ImageMagick.tar.gz
-    - cd ImageMagick-7*
-    - ./configure
-    - make
-    - make install
-    - ldconfig /usr/local/lib
   script:
     - R -e 'install.packages("magick")'
     - R CMD build . --no-build-vignettes --no-manual
