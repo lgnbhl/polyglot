@@ -12,7 +12,10 @@ before_script:
     - cd -
 
 test:
-  script:
-    - R -e 'install.packages("magick", "devtools")'
+   script:
+    - apt-get update
+    - apt-get install --yes --no-install-recommends r-cran-magick r-cran-devtools
+    - R -e "devtools::install_deps()"
     - R CMD build . --no-build-vignettes --no-manual
-    - R CMD check *tar.gz --no-build-vignettes --no-manual
+    - PKG_FILE_NAME=$(ls -1t *.tar.gz | head -n 1)
+    - R CMD check "${PKG_FILE_NAME}" --no-build-vignettes --no-manual
