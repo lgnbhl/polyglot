@@ -2,5 +2,7 @@ image: rocker/tidyverse
 
 test:
    script:
-    - R -e 'install.packages("magick")'
+    - apt-get update
+    - apt-get install --yes --no-install-recommends r-cran-magick r-cran-devtools
+    - R -e "devtools::install_deps()"
     - R -e 'devtools::check()'
