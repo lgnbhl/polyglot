@@ -1,4 +1,4 @@
-image: rocker/tidyverse
+image: rocker/tidyver
 
 test:
    script:
