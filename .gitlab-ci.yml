@@ -1,4 +1,4 @@
-image: rocker/r-ver
+image: r-base
 
 before_script:
     - wget https://www.imagemagick.org/download/ImageMagick.tar.gz
