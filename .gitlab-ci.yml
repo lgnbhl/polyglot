@@ -1,4 +1,4 @@
-image: r-base
+image: rocker/tidyverse
 
 before_script:
     - wget https://www.imagemagick.org/download/ImageMagick.tar.gz
@@ -8,9 +8,10 @@ before_script:
     - make
     - make install
     - ldconfig /usr/local/lib
+    - magick -version
     - cd -
 
 build:
   script:
     - R -e 'install.packages("magick")'
-    - R CMD build . --no-build-vignettes --no-manual
+    - R -e 'devtools::check()'
