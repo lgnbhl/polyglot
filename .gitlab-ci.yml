@@ -1,8 +1,6 @@
-image: rocker/tidyverse
+image: rocker/r-base
 
 before_script:
-    - pwd
-    - cd /
     - wget https://www.imagemagick.org/download/ImageMagick.tar.gz
     - tar xf ImageMagick.tar.gz
     - cd ImageMagick-7*
@@ -15,6 +13,6 @@ before_script:
 
 test:
   script:
-    - R -e 'install.packages("magick")'
+    - R -e 'install.packages("magick", "devtools")'
     - R CMD build . --no-build-vignettes --no-manual
     - R CMD check *tar.gz --no-build-vignettes --no-manual
