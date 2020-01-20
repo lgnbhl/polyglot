@@ -7,8 +7,8 @@ test:
     - cd ImageMagick-7*
     - ./configure
     - make
-    - sudo make install
-    - sudo ldconfig /usr/local/lib
+    - make install
+    - ldconfig /usr/local/lib
   script:
     - R -e 'install.packages("magick")'
     - R CMD build . --no-build-vignettes --no-manual
