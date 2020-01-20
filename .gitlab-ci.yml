@@ -1,4 +1,4 @@
-image: r-devel
+image: rocker/r-devel
 
 test:
   before_script:
