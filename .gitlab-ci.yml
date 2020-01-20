@@ -1,6 +1,7 @@
 image: rocker/r-base
 
 before_script:
+    - cd /
     - wget https://www.imagemagick.org/download/ImageMagick.tar.gz
     - tar xf ImageMagick.tar.gz
     - cd ImageMagick-7*
