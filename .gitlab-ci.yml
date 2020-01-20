@@ -11,6 +11,7 @@ before_script:
     - ldconfig /usr/local/lib
     - magick -version
     - cd -
+    - cd -
 
 test:
    script:
