@@ -5,7 +5,7 @@ Version: 0.2.1
 Authors@R: person("Félix", "Luginbuhl", email = "felix.luginbuhl@protonmail.ch", role = c("aut", "cre"))
 Description: Use the R console as an interactive learning environment to memorize any two columns dataset.
 Depends: R (>= 2.15.1)
-License: MIT + file LICENSE
+License: GPL-3
 Encoding: UTF-8
 LazyData: true
 RoxygenNote: 6.1.1
