@@ -2,6 +2,7 @@ image: r-base
 
 test:
   script:
-    - R -e 'install.packages(c("utils", "magick"))'
+    - sudo apt-get install -y libmagick++-dev
+    - R -e 'install.packages("magick")'
     - R CMD build . --no-build-vignettes --no-manual
     - R CMD check *tar.gz --no-build-vignettes --no-manual
