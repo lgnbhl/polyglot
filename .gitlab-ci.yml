@@ -1,6 +1,7 @@
 image: rocker/tidyverse
 
 before_script:
+    - pwd
     - cd /
     - wget https://www.imagemagick.org/download/ImageMagick.tar.gz
     - tar xf ImageMagick.tar.gz
@@ -10,9 +11,8 @@ before_script:
     - make install
     - ldconfig /usr/local/lib
     - magick -version
-    - cd /
 
-build:
+test:
   script:
     - R -e 'install.packages("magick")'
     - R -e 'devtools::check()'
