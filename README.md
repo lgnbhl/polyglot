@@ -1,4 +1,6 @@
 
+<!-- README.md is generated from README.Rmd. Please edit that file -->
+
 <!-- badges: start -->
 
 [![CRAN
@@ -11,7 +13,9 @@ status](https://gitlab.com/lgnbhl/polyglot/badges/master/pipeline.svg)](https://
 
 # polyglot <img src="man/figures/logo.png" align="right" />
 
-The **polyglot** package helps you learn foreign language vocabulary or
+> Use the R console as an interactive learning environment
+
+The package `polyglot` helps you learn foreign language vocabulary or
 any [flashcards](https://en.wikipedia.org/wiki/Flashcard) using R as an
 interactive learning environment. The package implements the popular
 [SuperMemo-2](https://en.wikipedia.org/wiki/SuperMemo) learning
