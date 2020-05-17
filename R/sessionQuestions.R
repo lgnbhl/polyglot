@@ -16,13 +16,8 @@
 #'
 #' @param assign.env An environment
 #'
-#' @importFrom utils menu
-#' @importFrom utils read.csv
-#' @importFrom utils select.list
-#' @importFrom utils write.csv
-#' @importFrom utils browseURL
-#' @importFrom magick image_read
-#' @importFrom magick image_scale
+#' @importFrom utils menu read.csv select.list write.csv browseURL
+#' @importFrom magick image_read image_scale
 #'
 #' @source \url{https://www.supermemo.com/english/ol/sm2.htm}{ SuperMemo-2 algorithm}
 #' @source \url{https://apps.ankiweb.net/docs/manual.html#what-spaced-repetition-algorithm-does-anki-use}{ Anki algorithm}

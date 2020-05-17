@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Initialize the interactive environment — learn • polyglot</title>
+<title>Get example CSV files — get_examples • polyglot</title>
 
 <!-- favicons -->
 <link rel="icon" type="image/png" sizes="16x16" href="../favicon-16x16.png">
@@ -46,8 +46,9 @@
 
 
 
-<meta property="og:title" content="Initialize the interactive environment — learn" />
-<meta property="og:description" content="This function will launch the interactive learning environment." />
+<meta property="og:title" content="Get example CSV files — get_examples" />
+<meta property="og:description" content="This function gives access to the CSV files given as demonstrations when
+using the learn function." />
 <meta property="og:image" content="/logo.png" />
 
 
@@ -144,48 +145,23 @@
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Initialize the interactive environment</h1>
-    <small class="dont-index">Source: <a href='https://github.com/lgnbhl/polyglot/blob/master/R/learn.R'><code>R/learn.R</code></a></small>
-    <div class="hidden name"><code>learn.Rd</code></div>
+    <h1>Get example CSV files</h1>
+    <small class="dont-index">Source: <a href='https://github.com/lgnbhl/polyglot/blob/master/R/get_examples.R'><code>R/get_examples.R</code></a></small>
+    <div class="hidden name"><code>get_examples.Rd</code></div>
     </div>
 
     <div class="ref-description">
-    <p>This function will launch the interactive learning environment.</p>
+    <p>This function gives access to the CSV files given as demonstrations when
+using the <code><a href='learn.html'>learn</a></code> function.</p>
     </div>
 
-    <pre class="usage"><span class='fu'>learn</span>(<span class='kw'>assign.env</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/sys.parent.html'>parent.frame</a></span>(<span class='fl'>1</span>))</pre>
+    <pre class="usage"><span class='fu'>get_examples</span>()</pre>
 
-    <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
-    <table class="ref-arguments">
-    <colgroup><col class="name" /><col class="desc" /></colgroup>
-    <tr>
-      <th>assign.env</th>
-      <td><p>An environment</p></td>
-    </tr>
-    </table>
 
-    <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
-
-    <p>This function initializes the interactive environment by proposing to select
-a CSV file from the caching directory built with the pins package. Once the file 
-is selected, the function reads the selected dataset and adds a numeric variable, 
-named Score, if not already existing. It also replaces any existing missing values
-by 0 from the Score variable. Finally the function returns to the
-<code><a href='sessionQuestions.html'>sessionQuestions</a></code> function, or to the <code><a href='sessionExit.html'>sessionExit</a></code>
-function if 0 is typed.</p>
-    <h2 class="hasAnchor" id="note"><a class="anchor" href="#note"></a>Note</h2>
-
-    <p>In order to study a new CSV file, simply save it into the inst/extdata/ directory.</p>
-<p>If you have any problem with the encoding, or if you want to read a dataset with
-an non-Latin alphabet, please type ?Sys.setlocale() and follow the instructions.</p>
-    <h2 class="hasAnchor" id="references"><a class="anchor" href="#references"></a>References</h2>
-
-    <p>A blog post describing the package with more development: <a href='https://lgnbhl.github.io/learner'>https://lgnbhl.github.io/learner</a></p>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='kw'>if</span>(<span class='fu'><a href='https://rdrr.io/r/base/interactive.html'>interactive</a></span>()){
-<span class='fu'>learn</span>()
-}</div></pre>
+    <pre class="examples"><div class='input'><span class='fu'>get_examples</span>()</div><div class='output co'>#&gt; [1] FALSE FALSE FALSE FALSE FALSE</div><div class='input'>
+</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">

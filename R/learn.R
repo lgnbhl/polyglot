@@ -4,9 +4,9 @@
 #'
 #' @details
 #' This function initializes the interactive environment by proposing to select
-#' a CSV file from the directory inst/extdata/. Once the file is selected, the
-#' function reads the selected dataset and adds a numeric variable, named
-#' Score, if not already existing. It also replaces any existing missing values
+#' a CSV file from the caching directory built with the pins package. Once the file 
+#' is selected, the function reads the selected dataset and adds a numeric variable, 
+#' named Score, if not already existing. It also replaces any existing missing values
 #' by 0 from the Score variable. Finally the function returns to the
 #' \code{\link{sessionQuestions}} function, or to the \code{\link{sessionExit}}
 #' function if 0 is typed.
@@ -27,31 +27,30 @@
 #' learn()
 #' }
 #'
-#' @importFrom utils read.csv
-#' @importFrom utils select.list
-#' @importFrom utils write.csv
+#' @importFrom utils read.csv select.list write.csv
+#' @importFrom pins board_local_storage
 #'
 #' @export
 
 learn <- function(assign.env = parent.frame(1)) {
-  cat("| Welcome to polyglot! \n")
-  cat("| Please choose a dataset to study, or type 0 to exit. \n")
-
+  
   # add sessionStartTime object if not existing
   if(!exists("sessionStartTime")) {
     sessionStartTime <- Sys.time()
     assign("sessionStartTime", sessionStartTime, envir = assign.env)
   }
+  
+  cat("| Welcome to polyglot! \n")
+  cat("| Please choose a dataset to study, or type 0 to exit. \n")
 
-  # interactive selection of a dataset
-  datasetPath <- system.file("extdata/", package = "polyglot")
-  datasetName <- select.list(list.files(path = paste0("", datasetPath, "")))
-  datasetAbsolutePath <- paste0("", datasetPath,"/", datasetName,"")
+  # interactive selection of a CSV dataset
+  datasetName <- select.list(list.files(path = pins::board_local_storage(), pattern = "*.csv"))
+  datasetAbsolutePath <- paste0(pins::board_local_storage(), "/", datasetName)
   assign("datasetAbsolutePath", datasetAbsolutePath, envir = assign.env, inherits = TRUE)
   if (datasetName == "") {
     sessionExit() # 0 selected, exit the learning session
   } else {
-    sessionDataset <- read.csv(paste0("", datasetAbsolutePath,""), stringsAsFactors = FALSE, na.strings = "")
+    sessionDataset <- read.csv(datasetAbsolutePath, stringsAsFactors = FALSE, na.strings = "")
     assign("sessionDataset", sessionDataset, envir = assign.env)
 
     # Check if the dataset has at least two colomns
@@ -72,7 +71,7 @@ learn <- function(assign.env = parent.frame(1)) {
     } else {
       sessionDataset$Score <- rep(as.numeric(0), nrow(sessionDataset))
       assign("sessionDataset", sessionDataset, envir = assign.env)
-      write.csv(sessionDataset, file = paste0("", datasetAbsolutePath, ""), row.names = FALSE)
+      write.csv(sessionDataset, file = datasetAbsolutePath, row.names = FALSE)
       cat(paste("|", datasetName,"selected, with", nrow(sessionDataset),"rows. \n"))
       cat("| New learning session launched... \n\n")
     }
@@ -89,7 +88,7 @@ learn <- function(assign.env = parent.frame(1)) {
     } else {
       sessionDataset$dueDate <- rep(as.Date(Sys.Date()), nrow(sessionDataset)) # add today date
       assign("sessionDataset", sessionDataset, envir = assign.env)
-      write.csv(sessionDataset, file = paste0("", datasetAbsolutePath, ""), row.names = FALSE)
+      write.csv(sessionDataset, file = datasetAbsolutePath, row.names = FALSE)
     }
     # If NAs exist in the dueDate variable, replace by today date
     sessionDataset$dueDate[which(is.na(sessionDataset$dueDate))] <- format(Sys.time(), "%Y-%m-%d")
@@ -101,7 +100,7 @@ learn <- function(assign.env = parent.frame(1)) {
     } else {
       sessionDataset$Repetition <- rep(as.numeric(0), nrow(sessionDataset)) # add today date
       assign("sessionDataset", sessionDataset, envir = assign.env)
-      write.csv(sessionDataset, file = paste0("", datasetAbsolutePath, ""), row.names = FALSE)
+      write.csv(sessionDataset, file = datasetAbsolutePath, row.names = FALSE)
     }
     # If NAs exist in the Repetition variable, replace by 0
     sessionDataset$Repetition[is.na(sessionDataset$Repetition)] <- as.numeric(0)
@@ -113,7 +112,7 @@ learn <- function(assign.env = parent.frame(1)) {
     } else {
       sessionDataset$eFactor <- rep(as.numeric(2.5), nrow(sessionDataset))
       assign("sessionDataset", sessionDataset, envir = assign.env)
-      write.csv(sessionDataset, file = paste0("", datasetAbsolutePath, ""), row.names = FALSE)
+      write.csv(sessionDataset, file = datasetAbsolutePath, row.names = FALSE)
     }
     # If NAs exist in the eFactor variable, replace by 2.5
     sessionDataset$eFactor[is.na(sessionDataset$eFactor)] <- as.numeric(2.5)
@@ -125,7 +124,7 @@ learn <- function(assign.env = parent.frame(1)) {
     } else {
       sessionDataset$Interval <-rep(as.difftime(0, units = "days"), nrow(sessionDataset))
       assign("sessionDataset", sessionDataset, envir = assign.env)
-      write.csv(sessionDataset, file = paste0("", datasetAbsolutePath, ""), row.names = FALSE)
+      write.csv(sessionDataset, file = datasetAbsolutePath, row.names = FALSE)
     }
     # If NAs exist in the Interval variable, replace by 0
     sessionDataset$Interval[is.na(sessionDataset$Interval)] <- as.difftime(0, units = "days")
@@ -135,7 +134,7 @@ learn <- function(assign.env = parent.frame(1)) {
     sessionDataset <- sessionDataset[order(sessionDataset$dueDate, sessionDataset$Score), ]
     assign("sessionDataset", sessionDataset, envir = assign.env)
 
-    write.csv(sessionDataset, file = paste0("", datasetAbsolutePath, ""), row.names = FALSE)
+    write.csv(sessionDataset, file = datasetAbsolutePath, row.names = FALSE)
     return(sessionQuestions())
   }
   invisible()

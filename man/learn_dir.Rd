@@ -4,14 +4,14 @@
 \alias{learn_dir}
 \title{Open the datasets directory}
 \usage{
-learn_dir(polyglotDirectory = paste0("", system.file("extdata/", package
-  = "polyglot"), ""))
+learn_dir(polyglotDirectory = pins::board_local_storage())
 }
 \arguments{
 \item{polyglotDirectory}{A string}
 }
 \description{
-This function will open the directory which contains the dataset files.
+This function will open the directory which contains the local datasets files 
+used in polygot thanks to the pins package.
 }
 \details{
 This function opens the directory which contain all the dataset files which are

@@ -9,6 +9,8 @@ navbar:
     href: index.html
   - text: Reference
     href: reference/index.html
+  - text: News
+    href: news/index.html
   right:
    - icon: fa-linkedin
      href: https://www.linkedin.com/in/felixluginbuhl
@@ -24,3 +26,4 @@ reference:
     contents: 
       - learn
       - learn_dir
+      - get_examples

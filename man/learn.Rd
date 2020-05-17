@@ -14,9 +14,9 @@ This function will launch the interactive learning environment.
 }
 \details{
 This function initializes the interactive environment by proposing to select
-a CSV file from the directory inst/extdata/. Once the file is selected, the
-function reads the selected dataset and adds a numeric variable, named
-Score, if not already existing. It also replaces any existing missing values
+a CSV file from the caching directory built with the pins package. Once the file 
+is selected, the function reads the selected dataset and adds a numeric variable, 
+named Score, if not already existing. It also replaces any existing missing values
 by 0 from the Score variable. Finally the function returns to the
 \code{\link{sessionQuestions}} function, or to the \code{\link{sessionExit}}
 function if 0 is typed.
