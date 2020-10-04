@@ -9,6 +9,8 @@ status](https://www.r-pkg.org/badges/version/polyglot)](https://CRAN.R-project.o
 total](https://cranlogs.r-pkg.org/badges/grand-total/polyglot)](https://cran.r-project.org/package=polyglot)
 [![pipeline
 status](https://gitlab.com/lgnbhl/polyglot/badges/master/pipeline.svg)](https://gitlab.com/lgnbhl/polyglot/pipelines)
+[![R build
+status](https://github.com/lgnbhl/polyglot/workflows/R-CMD-check/badge.svg)](https://github.com/lgnbhl/polyglot/actions)
 <!-- badges: end -->
 
 # polyglot <img src="man/figures/logo.png" align="right" />

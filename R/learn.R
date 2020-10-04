@@ -12,15 +12,10 @@
 #' function if 0 is typed.
 #'
 #' @note
-#' In order to study a new CSV file, simply save it into the inst/extdata/ directory.
-#'
 #' If you have any problem with the encoding, or if you want to read a dataset with
 #' an non-Latin alphabet, please type ?Sys.setlocale() and follow the instructions.
 #'
 #' @param assign.env An environment
-#'
-#' @references
-#' A blog post describing the package with more development: \url{https://lgnbhl.github.io/learner}
 #'
 #' @examples
 #' if(interactive()){

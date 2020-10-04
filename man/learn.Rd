@@ -22,8 +22,6 @@ by 0 from the Score variable. Finally the function returns to the
 function if 0 is typed.
 }
 \note{
-In order to study a new CSV file, simply save it into the inst/extdata/ directory.
-
 If you have any problem with the encoding, or if you want to read a dataset with
 an non-Latin alphabet, please type ?Sys.setlocale() and follow the instructions.
 }
@@ -32,7 +30,4 @@ if(interactive()){
 learn()
 }
 
-}
-\references{
-A blog post describing the package with more development: \url{https://lgnbhl.github.io/learner}
 }
