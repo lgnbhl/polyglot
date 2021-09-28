@@ -1,7 +1,7 @@
 Package: polyglot
 Type: Package
 Title: Learn Foreign Language Vocabulary
-Version: 0.3.0
+Version: 0.3.0.9000
 Authors@R: person("Félix", "Luginbuhl", email = "felix.luginbuhl@protonmail.ch", role = c("aut", "cre"))
 Description: Use the R console as an interactive learning environment to memorize any two columns dataset.
 Depends: R (>= 3.2.0)
