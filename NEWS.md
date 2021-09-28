@@ -1,5 +1,7 @@
 # polyglot (development version)
 
+- Use {rappdirs} to access cache directory rather than pins.
+
 # polyglot 0.3.0
 
 - Implements permanente caching folder thanks to the {pins} package. 

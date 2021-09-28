@@ -4,7 +4,7 @@
 #'
 #' @details
 #' This function initializes the interactive environment by proposing to select
-#' a CSV file from the caching directory built with the pins package. Once the file 
+#' a CSV file from polyglot's data directory. Once the file 
 #' is selected, the function reads the selected dataset and adds a numeric variable, 
 #' named Score, if not already existing. It also replaces any existing missing values
 #' by 0 from the Score variable. Finally the function returns to the
@@ -23,8 +23,6 @@
 #' }
 #'
 #' @importFrom utils read.csv select.list write.csv
-#' @importFrom pins board_local_storage
-#'
 #' @export
 
 learn <- function(assign.env = parent.frame(1)) {
@@ -39,8 +37,8 @@ learn <- function(assign.env = parent.frame(1)) {
   cat("| Please choose a dataset to study, or type 0 to exit. \n")
 
   # interactive selection of a CSV dataset
-  datasetName <- select.list(list.files(path = pins::board_local_storage(), pattern = "*.csv"))
-  datasetAbsolutePath <- paste0(pins::board_local_storage(), "/", datasetName)
+  datasetName <- select.list(list.files(path = cache_dir(), pattern = "*.csv"))
+  datasetAbsolutePath <- paste0(cache_dir(), "/", datasetName)
   assign("datasetAbsolutePath", datasetAbsolutePath, envir = assign.env, inherits = TRUE)
   if (datasetName == "") {
     sessionExit() # 0 selected, exit the learning session

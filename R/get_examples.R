@@ -6,8 +6,6 @@
 #' @examples
 #' get_examples()
 #' 
-#' @importFrom pins board_local_storage
-#'
 #' @export
 
 get_examples <- function(){
@@ -15,5 +13,5 @@ get_examples <- function(){
   datasetName <- list.files(path = paste0("", datasetPath, ""))
   datasetAbsolutePath <- paste0(datasetPath, datasetName)
   
-  file.copy(datasetAbsolutePath, to = paste0(pins::board_local_storage(), "/", datasetName))
+  file.copy(datasetAbsolutePath, to = paste0(cache_dir(), "/", datasetName))
 }
