@@ -26,5 +26,7 @@ learn_dir <- function(polyglotDirectory = cache_dir()){
 }
 
 cache_dir <- function() {
-  rappdirs::user_data_dir("polyglot")
+  cache_path <- rappdirs::user_data_dir("polyglot")
+  dir.create(cache_path, recursive = TRUE, showWarnings = FALSE)
+  cache_path
 }

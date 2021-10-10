@@ -9,9 +9,12 @@
 #' @export
 
 get_examples <- function(){
-  datasetPath <- system.file("extdata/", package = "polyglot")
-  datasetName <- list.files(path = paste0("", datasetPath, ""))
-  datasetAbsolutePath <- paste0(datasetPath, datasetName)
-  
-  file.copy(datasetAbsolutePath, to = paste0(cache_dir(), "/", datasetName))
+  examples_path <- list.files(path = system.file("extdata/", package = "polyglot"), full.names = TRUE)
+  cache_path <- rappdirs::user_data_dir("polyglot")
+  if(!dir.exists(cache_path)) {
+    cache_path <- rappdirs::user_data_dir("polyglot")
+    dir.create(cache_path, recursive = TRUE, showWarnings = FALSE)
+    cache_path
+  }
+  file.copy(from = examples_path, to = cache_path, overwrite = FALSE)
 }
