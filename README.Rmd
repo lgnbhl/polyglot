@@ -7,8 +7,8 @@ output: github_document
 <!-- badges: start -->
 [![Lifecycle: experimental](https://img.shields.io/badge/lifecycle-experimental-orange.svg)](https://www.tidyverse.org/lifecycle/#experimental)
 [![CRAN status](https://www.r-pkg.org/badges/version/polyglot)](https://CRAN.R-project.org/package=polyglot)
-[![Grand total](https://cranlogs.r-pkg.org/badges/grand-total/polyglot)](https://cran.r-project.org/package=polyglot)
-[![R build status](https://github.com/lgnbhl/polyglot/workflows/R-CMD-check/badge.svg)](https://github.com/lgnbhl/polyglot/actions)
+[![R-CMD-check](https://github.com/lgnbhl/polyglot/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/lgnbhl/polyglot/actions/workflows/R-CMD-check.yaml)
+[![LinkedIn](https://img.shields.io/badge/LinkedIn-Follow-E4405F?style=social&logo=linkedin)](https://www.linkedin.com/in/FelixLuginbuhl)
 <!-- badges: end -->
 
 # polyglot <img src="man/figures/logo.png" align="right" />
@@ -18,13 +18,6 @@ output: github_document
 The package `polyglot` helps you learn foreign language vocabulary or any [flashcards](https://en.wikipedia.org/wiki/Flashcard) using R as an interactive learning environment. The package implements a simplified version of the [SuperMemo-2](https://www.supermemo.com/en/archives1990-2015/english/ol/sm2) learning algorithm which optimizes intervals between repetitions, minimizes the time you spend on learning, and helps you achieve your learning goals in a more effective way.
 
 ### Installation
-
-```{r eval=FALSE}
-# Install the released version from CRAN
-install.packages("polyglot")
-```
-
-To get a bug fix, or use a feature from the development version, you can install polyglot from GitHub.
 
 ```{r eval=FALSE}
 # install from Github

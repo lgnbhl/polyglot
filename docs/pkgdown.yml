@@ -1,6 +1,9 @@
-pandoc: 2.7.3
-pkgdown: 1.6.1
+pandoc: 3.1.11
+pkgdown: 2.0.9
 pkgdown_sha: ~
 articles: {}
-last_built: 2021-02-23T20:19Z
+last_built: 2024-05-27T17:45Z
+urls:
+  reference: https://felixluginbuhl.com/polyglot/reference
+  article: https://felixluginbuhl.com/polyglot/articles
 

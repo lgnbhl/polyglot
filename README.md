@@ -1,16 +1,13 @@
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
-
 <!-- badges: start -->
 
 [![Lifecycle:
 experimental](https://img.shields.io/badge/lifecycle-experimental-orange.svg)](https://www.tidyverse.org/lifecycle/#experimental)
 [![CRAN
 status](https://www.r-pkg.org/badges/version/polyglot)](https://CRAN.R-project.org/package=polyglot)
-[![Grand
-total](https://cranlogs.r-pkg.org/badges/grand-total/polyglot)](https://cran.r-project.org/package=polyglot)
-[![R build
-status](https://github.com/lgnbhl/polyglot/workflows/R-CMD-check/badge.svg)](https://github.com/lgnbhl/polyglot/actions)
+[![R-CMD-check](https://github.com/lgnbhl/polyglot/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/lgnbhl/polyglot/actions/workflows/R-CMD-check.yaml)
+[![LinkedIn](https://img.shields.io/badge/LinkedIn-Follow-E4405F?style=social&logo=linkedin)](https://www.linkedin.com/in/FelixLuginbuhl)
 <!-- badges: end -->
 
 # polyglot <img src="man/figures/logo.png" align="right" />
@@ -27,14 +24,6 @@ minimizes the time you spend on learning, and helps you achieve your
 learning goals in a more effective way.
 
 ### Installation
-
-``` r
-# Install the released version from CRAN
-install.packages("polyglot")
-```
-
-To get a bug fix, or use a feature from the development version, you can
-install polyglot from GitHub.
 
 ``` r
 # install from Github
@@ -84,7 +73,7 @@ The GIF below shows the learning of the CSV spreadsheet file
 ### Learn with images
 
 You can add images by putting the Web URL or the [full
-path](https://en.wikipedia.org/wiki/Path_\(computing\)) of your images
+path](https://en.wikipedia.org/wiki/Path_(computing)) of your images
 into the spreadsheet rows.
 
 For example, you can study the locations, flags and capitals of [all the
@@ -104,4 +93,4 @@ of the International Bartenders Association (IBA).
 The CSV spreadsheet files given as examples are
 [here](https://github.com/lgnbhl/polyglot/tree/master/inst/extdata).
 
-Happy learning\!
+Happy learning!

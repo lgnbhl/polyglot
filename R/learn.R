@@ -24,7 +24,6 @@
 #'
 #' @importFrom utils read.csv select.list write.csv
 #' @export
-
 learn <- function(assign.env = parent.frame(1)) {
   
   # add sessionStartTime object if not existing

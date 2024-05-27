@@ -7,7 +7,6 @@
 #' get_examples()
 #' 
 #' @export
-
 get_examples <- function(){
   examples_path <- list.files(path = system.file("extdata/", package = "polyglot"), full.names = TRUE)
   cache_path <- rappdirs::user_data_dir("polyglot")

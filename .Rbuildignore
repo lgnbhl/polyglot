@@ -7,3 +7,5 @@
 ^pkgdown$
 ^\.gitlab-ci\.yml$
 ^\.github$
+^LICENSE\.md$
+^CRAN-RELEASE$

@@ -1,6 +1,7 @@
-# polyglot (development version)
+# polyglot 0.3.1
 
 - Use {rappdirs} to access cache directory rather than pins.
+- Add Hadley Wickham as new contributor.
 
 # polyglot 0.3.0
 

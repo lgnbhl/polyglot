@@ -4,9 +4,9 @@
 \alias{sessionQuestions}
 \title{Ask questions in the interactive environment}
 \source{
-\url{https://www.supermemo.com/english/ol/sm2.htm}{ SuperMemo-2 algorithm}
+\href{https://www.supermemo.com/english/ol/sm2.htm}{SuperMemo-2 algorithm}
 
-\url{https://apps.ankiweb.net/docs/manual.html#what-spaced-repetition-algorithm-does-anki-use}{ Anki algorithm}
+\href{https://apps.ankiweb.net/docs/manual.html#what-spaced-repetition-algorithm-does-anki-use}{Anki algorithm}
 }
 \usage{
 sessionQuestions(assign.env = parent.frame(1))

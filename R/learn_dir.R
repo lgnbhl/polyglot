@@ -15,7 +15,6 @@
 #' }
 #'
 #' @export
-
 learn_dir <- function(polyglotDirectory = cache_dir()){
   
   if (.Platform['OS.type'] == "windows"){
