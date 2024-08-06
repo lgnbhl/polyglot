@@ -10,7 +10,7 @@ status](https://www.r-pkg.org/badges/version/polyglot)](https://CRAN.R-project.o
 [![LinkedIn](https://img.shields.io/badge/LinkedIn-Follow-E4405F?style=social&logo=linkedin)](https://www.linkedin.com/in/FelixLuginbuhl)
 <!-- badges: end -->
 
-# polyglot <img src="man/figures/logo.png" align="right" />
+# polyglot <img src="man/figures/logo.png" align="right" width="138" />
 
 > Use the R console as an interactive learning environment
 
